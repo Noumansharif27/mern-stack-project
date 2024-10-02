@@ -1,0 +1,33 @@
+<%- layout("/layouts/boilerplate") %>
+
+<body>
+  <form action="/signin" method="post" class="signin-form">
+    <h1>Sign In</h1>
+    <div class="signin-username">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" placeholder="username" />
+    </div>
+
+    <div class="signin-email">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="examle@mail.com"
+        id="email"
+      />
+    </div>
+
+    <div class="signin-password">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="******"
+        id="password"
+      />
+    </div>
+
+    <button class="btn">Sign In</button>
+  </form>
+</body>

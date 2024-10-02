@@ -1,0 +1,437 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  width: 100dvw;
+}
+
+.container {
+  width: 100dvw;
+  background-color: #efefef;
+}
+
+:root {
+  --nav-ancor-text-color: #000;
+  --footer-el-border-color: #545252;
+  --universal-bg-dark-color: #333333;
+}
+
+/* Nav-bar */
+.nav-bar {
+  height: 12dvh;
+  width: 100vw;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* box-shadow: 10px 10px 10px -1 #000000f6; */
+}
+
+.nav-bar a {
+  color: var(--ancor-text-color);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-bar .icons {
+  width: 12rem;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar .icons img {
+  object-fit: cover;
+  object-position: center;
+  height: 80%;
+}
+
+.nav-bar .search-bar {
+  width: 25rem;
+  height: 65%;
+  border-radius: 7.5rem;
+  border: 2px solid #000;
+  padding: 0 0 0 5rem;
+  font-size: 1.08rem;
+  background-color: #f3f3f3c3;
+}
+
+.nav-bar .brand-logo {
+  width: 5rem;
+  /* background-color: aqua; */
+}
+
+/* Footer */
+
+.footer {
+  height: 75dvh;
+  /* position: absolute;
+  bottom: 0; */
+  background-color: var(--universal-bg-dark-color);
+  width: 100%;
+  color: #fff;
+}
+
+.teacher-baner {
+  height: 16%;
+  border-bottom: 1px solid var(--footer-el-border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 4rem 0;
+}
+
+.teacher-baner h3 {
+  line-height: 0.5rem;
+}
+
+.footer .companies {
+  height: 18%;
+  border-bottom: 1px solid var(--footer-el-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 4rem 0;
+}
+
+.btn {
+  height: 2.1rem;
+  width: 8rem;
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 0.5rem;
+}
+
+.btn:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+.footer .links {
+  display: flex;
+  padding: 1rem 4rem 0 4rem;
+  height: 30%;
+}
+
+.footer .service-links,
+.furture-links,
+.secuarity-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.footer .footer-link {
+  height: 100%;
+  width: 30.28%;
+}
+
+.footer .footer-link a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer .footer-links:hover {
+  text-decoration: underline;
+}
+
+.footer-brand-logo {
+  height: 5.5rem;
+  padding: 1rem 0 0 4rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer-brand-logo h2 {
+  margin-top: 2rem;
+}
+
+/* .footer-brand-logo img {
+  height: 80%;
+  width: 6%;
+  object-fit: cover;
+  object-position: center;
+} */
+
+/* Index */
+
+.hero-section {
+  height: 60dvh;
+  width: 100%;
+  background-color: #efefef;
+  position: relative;
+}
+
+.hero-section img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-section .card {
+  height: 12rem;
+  width: 25rem;
+  background-color: #fff;
+  position: absolute;
+  left: 25%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 1rem;
+  box-shadow: 10px 10px 10px -1px #00000070;
+}
+
+.hero-section .card h1 {
+  font-size: 2.3rem;
+}
+
+.hero-section .card p {
+  font-size: 1.2rem;
+}
+
+.courses-dash-board {
+  height: 40dvh;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.courses-dash-board .my-courses-cards {
+  width: 95%;
+  height: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-courses-cards .card {
+  height: 8rem;
+  width: 31%;
+  display: flex;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: inherit;
+  border: 1px solid var(--footer-el-border-color);
+}
+
+.my-courses-cards .card .card-image {
+  width: 35%;
+  height: 100%;
+  border-right: 1px solid var(--footer-el-border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--universal-bg-dark-color);
+}
+
+.my-courses-cards .card .card-details {
+  width: 65%;
+  height: 100%;
+  padding-left: 1rem;
+}
+
+.courses-dash-board .link {
+  position: absolute;
+  right: 12%;
+  top: 15%;
+}
+
+.container .banner {
+  width: 92%;
+  height: 6rem;
+  background-color: var(--universal-bg-dark-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  margin: auto;
+  color: #fff;
+  border-radius: 0.2rem;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+}
+.btns .btn {
+  width: 10rem;
+  height: 3rem;
+}
+
+.btns .bsns-btn {
+  background-color: #fff;
+  color: #000;
+}
+
+/* pg-1 */
+
+.pg-1 {
+  height: 70dvh;
+  width: 90dvw;
+  padding: 1rem 2rem;
+  overflow-x: hidden;
+}
+
+.pg-1 .pg-1-hero-heading h1 {
+  font-size: 2rem;
+}
+
+/* .pg-1 .pg-1-hero-heading h1 {
+  font-size: 2rem;
+} */
+
+.pg-1 .card {
+  width: 98%;
+  height: 15rem;
+  border: 1px solid var(--footer-el-border-color);
+  padding: 1rem;
+  /* margin: auto; */
+  display: flex;
+  border-radius: 0.3rem;
+}
+
+.pg-1 .card .card-image {
+  width: 35%;
+}
+
+.pg-1 .card .card-image img {
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--universal-bg-dark-color);
+  border-radius: 0.3rem;
+}
+
+.pg-1 .card .card-details {
+  width: 65%;
+  padding-left: 1rem;
+}
+
+.pg-1 .card-description {
+  width: 50%;
+  line-height: 1.5;
+}
+
+.pg-1 .card-author {
+  opacity: 0.75;
+  font-size: 0.85rem;
+}
+
+.pg-1 .card-update p {
+  font-size: 0.85rem;
+}
+
+.pg-1 .card-update span {
+  color: blue;
+}
+
+.pg-1 .card-feature {
+  height: 1.75rem;
+  width: 5rem;
+  background-color: blue !important;
+}
+
+.pg-1 .card-feature a {
+  text-decoration: none;
+  color: #fff !important;
+  font-size: 0.75rem;
+}
+
+/* pg-2 */
+.pg-2 {
+  height: 220vh;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.pg-2 .card-row {
+  margin-bottom: 4rem;
+}
+
+.pg-2 .recommended-course-cards {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 4rem;
+}
+
+.pg-2 .card {
+  height: 20rem;
+  width: 18rem;
+  border: 1px solid var(--universal-bg-dark-color);
+  padding: 0 0.5rem;
+}
+
+.pg-2 .card .card-image {
+  height: 45%;
+  border-bottom: 1px solid var(--universal-bg-dark-color);
+  margin-bottom: 0.5rem;
+}
+
+.pg-2 .card-title h4 {
+  margin-bottom: 0.5rem;
+}
+
+.pg-2 .card-author p {
+  opacity: 0.75;
+  font-size: 0.85rem;
+  font-weight: 550;
+}
+
+/* .pg-2 .card-reviews {
+  
+} */
+
+/* Sing-In form */
+
+.signin-form {
+  height: 70dvh;
+  width: 25dvw;
+  margin: auto;
+  padding: 1.5rem 1rem 0;
+}
+
+.signin-form div {
+  height: 4rem;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.signin-form label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.signin-form input {
+  border: none;
+  border-bottom: 1px solid var(--universal-bg-dark-color);
+  height: 2rem;
+  width: 100%;
+  background-color: transparent;
+  /* border-radius: 7.5rem; */
+  padding: 0.5rem;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.signin-form .btn {
+  background-color: var(--universal-bg-dark-color);
+  border-color: var(--universal-bg-dark-color);
+  height: 2.5rem;
+  font-size: 1rem;
+  margin-top: 2.5rem;
+}
+
+.signin-form .btn:hover {
+  color: #fff;
+  opacity: 0.8;
+}
