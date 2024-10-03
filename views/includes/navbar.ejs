@@ -1,10 +1,15 @@
 <nav class="nav-bar">
   <img src="/assets/logo.svg" class="brand-logo" />
-  <a href="/home" class="categories">Home</a>
+  <a href="/courses" class="categories">Home</a>
   <input type="text" class="search-bar" placeholder="Search for anything" />
+  <% if (!currentUser) { %>
   <a href="/signin" class="fa-bussiness">Sign In</a>
-  <a href="/login" class="tech-on-fa">Login </a>
-  <a href="#" class="fa-user-learning">My learning</a>
+  <a href="/login" class="tech-on-fa">Login</a>
+  <% } %> <% if (currentUser) { %>
+  <a href="/logout" class="tech-on-fa">Logout</a>
+  <% } %> <% if (currentUser) { %>
+  <a href="/show" class="fa-user-learning">My learning</a>
+  <% } %>
   <div class="icons">
     <img src="/assets/insta.svg" alt="instagram" />
     <img src="/assets/linkedin.svg" alt="linkedin" />

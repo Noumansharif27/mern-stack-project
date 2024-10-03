@@ -1,29 +1,21 @@
 <% if(success && success.length) { %>
 <div
-  class="alert alert-success alert-dismissible fade show col-8 offset-2"
-  role
-  alert
+  class="alerts alert-success"
+  style="background-color: #6de4a9; border-color: green; color: #000"
 >
   <%= success %>
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="close"
-  ></button>
+  <button class="alert-close-btn">
+    <img src="/assets/alert-cross.svg" alt="" />
+  </button>
 </div>
 <% } %> <% if(error && error.length) { %>
 <div
-  class="alert alert-danger alert-dismissible fade show col-8 offset-2"
-  role
-  alert
+  class="alerts alert-error"
+  style="background-color: #ff000092; border-color: #ff0000; color: #000"
 >
   <%= error %>
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="close"
-  ></button>
+  <button class="alert-close-btn">
+    <img src="/assets/alert-cross.svg" alt="" />
+  </button>
 </div>
 <% } %>

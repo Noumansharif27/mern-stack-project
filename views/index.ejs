@@ -7,7 +7,7 @@
         <p>Skill for you present (and for future). Get started with us.</p>
       </div>
     </div>
-
+    <% if(currentUser) { %>
     <div class="courses-dash-board">
       <h1>Lets start Learning</h1>
       <a href="#" class="link"><strong>My learning</strong></a>
@@ -41,6 +41,7 @@
         </div>
       </div>
     </div>
+    <% } %>
 
     <div class="banner">
       <p>
@@ -55,10 +56,17 @@
   </section>
 
   <section class="pg-1">
+    <% if(currentUser) { %>
     <div class="pg-1-hero-heading">
       <h1>What to learn next</h1>
       <h2>our top pick for you</h2>
     </div>
+    <% } %> <% if(!currentUser) { %>
+    <div class="pg-1-hero-heading">
+      <h1>Best Seller</h1>
+      <h2>Most watched course</h2>
+    </div>
+    <% } %>
     <div class="card">
       <div class="card-image">
         <img src="/assets/pg-1-crd-img.png" alt="" />
@@ -85,49 +93,54 @@
 
   <section class="pg-2">
     <div class="card-row-1 card-row">
+      <% if(currentUser) { %>
       <h2>Recomended for you</h2>
+      <% } %> <% if(!currentUser) { %>
+      <h2>High demand content</h2>
+      <% } %>
+
       <div class="recommended-course-cards">
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
       </div>
@@ -136,47 +149,47 @@
     <div class="card-row-2 card-row">
       <h2>Popular for Full Stack Web Developer</h2>
       <div class="recommended-course-cards">
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
       </div>
@@ -185,47 +198,47 @@
     <div class="card-row-3 card-row">
       <h2>Learners are viewing</h2>
       <div class="recommended-course-cards">
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" type="button">
           <div class="card-image"></div>
           <div class="card-title">
             <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
           </div>
           <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
           <div class="card-reviews">
-            <p><strong>4.2</strong> 4.2</p>
+            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
           </div>
         </div>
       </div>

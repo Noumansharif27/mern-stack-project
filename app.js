@@ -1,12 +1,13 @@
 const express = require("express");
 const path = require("path");
 const ejsMate = require("ejs-mate");
-const User = require("./models/user.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("connect-flash");
+const User = require("./models/user.js");
+const Course = require("./models/course.js");
 
 const app = express();
 const port = 8080;
@@ -66,7 +67,7 @@ app.get("/", (req, res) => {
 });
 
 // Index Rought
-app.get("/home", (req, res) => {
+app.get("/courses", (req, res) => {
   res.render("index.ejs");
 });
 
@@ -103,10 +104,27 @@ app.post(
   (req, res) => {
     console.log(req.user);
     req.flash("success", "Welcome back to Future Academy!");
+    // res.locals.currentUser = req.user;
     console.log(res.locals.currentUser);
-    res.redirect("/home");
+    res.redirect("/courses");
   }
 );
+
+// Logout Rought
+app.get("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      next(err);
+    }
+
+    req.flash("success", "Logout successfully!");
+    res.redirect("/courses");
+  });
+});
+
+app.get("/show", (req, res) => {
+  res.render("show.ejs");
+});
 
 app.use("*", (req, res) => {
   res.render("error.ejs");
