@@ -17,6 +17,9 @@ async function main() {
 async function initDB() {
   await Course.deleteMany({});
 
+  // initData.data = initData.data.map((obj) => ({
+  //   ...obj,
+  // }));
   await Course.insertMany(initData.data);
   console.log("data was initilize.");
 }

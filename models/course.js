@@ -1,4 +1,3 @@
-const { required } = require("joi");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -11,8 +10,16 @@ const courseSchema = new Schema({
     type: String,
     required: true,
   },
-  author: {
+  image: {
     type: String,
+    default: "/assets/default-course-image.jpg",
+  },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+  price: {
+    type: Number,
     required: true,
   },
   publishDate: {
@@ -22,4 +29,4 @@ const courseSchema = new Schema({
   rating: [],
 });
 
-module.exports.Course = mongoose.model("Course", courseSchema);
+module.exports = mongoose.model("Course", courseSchema);

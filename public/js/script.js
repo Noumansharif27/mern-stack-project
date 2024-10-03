@@ -1,6 +1,10 @@
-let alertCloseBtn = document.querySelector(".alert-close-btn");
-let alert = document.querySelector(".alerts");
+let bannerCancelingAnimation = () => {
+  let closingBannerBtn = document.querySelector(".closing-banner-btn");
+  let banner = document.querySelector(".closing-banner");
 
-alertCloseBtn.addEventListener("click", () => {
-  alert.style.display = "none";
-});
+  closingBannerBtn.addEventListener("click", () => {
+    banner.style.display = "none";
+  });
+};
+
+bannerCancelingAnimation();

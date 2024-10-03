@@ -1,13 +1,17 @@
 const express = require("express");
 const path = require("path");
 const ejsMate = require("ejs-mate");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("connect-flash");
 const User = require("./models/user.js");
 const Course = require("./models/course.js");
+const Tutor = require("./models/tutor.js");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const courseRought = require("./routes/course.js");
+const userRought = require("./routes/user.js");
+const tutorRought = require("./routes/tutor.js");
 
 const app = express();
 const port = 8080;
@@ -61,69 +65,13 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/courses", courseRought);
+app.use("/", userRought);
+app.use("/", tutorRought);
+
 // Root Rought
 app.get("/", (req, res) => {
   res.send("Welcome to root");
-});
-
-// Index Rought
-app.get("/courses", (req, res) => {
-  res.render("index.ejs");
-});
-
-app.get("/signin", (req, res) => {
-  res.render("signin.ejs");
-});
-
-app.post("/signin", async (req, res) => {
-  let { username, password, email } = req.body;
-  // console.log({ username, password, email });
-
-  let user = new User({
-    username,
-    password,
-    email,
-  });
-
-  let registeredUser = await User.register(user, password);
-  console.log(registeredUser);
-
-  res.send("working");
-});
-
-app.get("/login", (req, res) => {
-  res.render("login.ejs");
-});
-
-app.post(
-  "/login",
-  passport.authenticate("local", {
-    failureRedirect: "/login",
-    failureFlash: true,
-  }),
-  (req, res) => {
-    console.log(req.user);
-    req.flash("success", "Welcome back to Future Academy!");
-    // res.locals.currentUser = req.user;
-    console.log(res.locals.currentUser);
-    res.redirect("/courses");
-  }
-);
-
-// Logout Rought
-app.get("/logout", (req, res, next) => {
-  req.logout((err) => {
-    if (err) {
-      next(err);
-    }
-
-    req.flash("success", "Logout successfully!");
-    res.redirect("/courses");
-  });
-});
-
-app.get("/show", (req, res) => {
-  res.render("show.ejs");
 });
 
 app.use("*", (req, res) => {

@@ -43,14 +43,16 @@
     </div>
     <% } %>
 
-    <div class="banner">
+    <div class="banner closing-banner">
       <p>
         <strong>Training 5 or more peolpe?</strong> Get your team access to
         Future Academy with 10k+ premium courses.
       </p>
       <div class="btns">
-        <div class="btn bsns-btn">Get AF Bussiness</div>
-        <div class="btn">Dissmiss</div>
+        <form action="/tutor" method="get">
+          <button class="btn bsns-btn glowing-btn">Get AF Bussiness</button>
+        </form>
+        <button class="btn closing-banner-btn">Dissmiss</button>
       </div>
     </div>
   </section>
@@ -69,7 +71,7 @@
     <% } %>
     <div class="card">
       <div class="card-image">
-        <img src="/assets/pg-1-crd-img.png" alt="" />
+        <img src="/assets/english-course.jpg" alt="" />
       </div>
       <div class="card-details">
         <div class="card-title">
@@ -100,147 +102,66 @@
       <% } %>
 
       <div class="recommended-course-cards">
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
+        <% for(course of courses) { %>
+        <a href="/courses/<%= course._id %>/show" class="card-links">
+          <div class="card" type="button">
+            <div class="card-image">
+              <img src="<%= course.image %>" alt="" />
+            </div>
+            <div class="card-title">
+              <h4><%= course.title %></h4>
+            </div>
+            <div class="card-author"><p><%= course.description %></p></div>
+            <div class="card-reviews">
+              <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
+            </div>
           </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
-
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
-          </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
-
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
-          </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
-
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
-          </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
+        </a>
+        <% } %>
       </div>
     </div>
 
     <div class="card-row-2 card-row">
       <h2>Popular for Full Stack Web Developer</h2>
       <div class="recommended-course-cards">
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
+        <% for(course of courses) { %>
+        <a href="/courses/<%= course._id %>/show" class="card-links">
+          <div class="card" type="button">
+            <div class="card-image">
+              <img src="<%= course.image %>" alt="" />
+            </div>
+            <div class="card-title">
+              <h4><%= course.title %></h4>
+            </div>
+            <div class="card-author"><p><%= course.description %></p></div>
+            <div class="card-reviews">
+              <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
+            </div>
           </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
-
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
-          </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
-
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
-          </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
-
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
-          </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
+        </a>
+        <% } %>
       </div>
     </div>
 
     <div class="card-row-3 card-row">
       <h2>Learners are viewing</h2>
       <div class="recommended-course-cards">
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
+        <% for(course of courses) { %>
+        <a href="/courses/<%= course._id %>/show" class="card-links">
+          <div class="card" type="button" role="button">
+            <div class="card-image">
+              <img src="<%= course.image %>" alt="" />
+            </div>
+            <div class="card-title">
+              <h4><%= course.title %></h4>
+            </div>
+            <div class="card-author"><p><%= course.description %></p></div>
+            <div class="card-reviews">
+              <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
+            </div>
           </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
-
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
-          </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
-
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
-          </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
-
-        <div class="card" type="button">
-          <div class="card-image"></div>
-          <div class="card-title">
-            <h4>Lorem ipsum dolor sit amet dolor adipisicing elit.</h4>
-          </div>
-          <div class="card-author"><p>Lorem, ipsum dolor.</p></div>
-          <div class="card-reviews">
-            <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
-          </div>
-        </div>
+        </a>
+        <% } %>
       </div>
     </div>
   </section>

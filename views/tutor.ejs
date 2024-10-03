@@ -1,15 +1,26 @@
 <%- layout("/layouts/boilerplate") %>
 
 <body>
-  <form action="/login" method="post" class="signin-form">
-    <h1>Login</h1>
+  <form action="/tutor" method="post" class="signin-form">
+    <h1>Become Tutor</h1>
     <div class="signin-username">
       <label for="username">Username</label>
       <input
         type="text"
-        name="username"
+        name="tutor[username]"
         id="username"
         placeholder="username"
+        required
+      />
+    </div>
+
+    <div class="signin-email">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="tutor[email]"
+        placeholder="examle@mail.com"
+        id="email"
         required
       />
     </div>
@@ -18,13 +29,20 @@
       <label for="password">Password</label>
       <input
         type="password"
-        name="password"
+        name="tutor[password]"
         placeholder="******"
         id="password"
         required
       />
     </div>
 
+    <input
+      type="text"
+      name="tutor"
+      id="tutor[role]"
+      style="display: none"
+      checked
+    />
     <button class="btn">Sign In</button>
   </form>
 </body>

@@ -1,20 +1,20 @@
 <% if(success && success.length) { %>
 <div
-  class="alerts alert-success"
+  class="alerts alert-success closing-banner"
   style="background-color: #6de4a9; border-color: green; color: #000"
 >
   <%= success %>
-  <button class="alert-close-btn">
+  <button class="alert-close-btn closing-banner-btn">
     <img src="/assets/alert-cross.svg" alt="" />
   </button>
 </div>
 <% } %> <% if(error && error.length) { %>
 <div
-  class="alerts alert-error"
+  class="alerts alert-error closing-banner"
   style="background-color: #ff000092; border-color: #ff0000; color: #000"
 >
   <%= error %>
-  <button class="alert-close-btn">
+  <button class="alert-close-btn closing-banner-btn">
     <img src="/assets/alert-cross.svg" alt="" />
   </button>
 </div>
