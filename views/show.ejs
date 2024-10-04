@@ -25,14 +25,17 @@
         <img src="/assets/play-icon.svg" class="play-icon" />
       </div>
       <h3 class="card-status"><%= course.description %></h3>
+      <% if(currentUser && course.author._id.equals(currentUser._id)) { %>
       <form action="/courses/<%= course._id %>/edit" method="get">
         <button class="card-purchase-btn btn btn-2">Edit course</button>
       </form>
-      <% if(!currentUser) { %>
+      <% } %> <% if(!currentUser) { %>
       <button class="card-purchase-btn btn btn-2">Purchase course</button>
       <% } %>
       <!-- <button class="card-purchase-btn">Go to course</button> -->
+      <% if(currentUser && course.author._id.equals(currentUser._id)) { %>
       <span class="guarante-label">30-Day-Money-Back-Guarrantee</span>
+      <% } %>
       <div class="card-content-details">
         <h4>This curse includes:</h4>
         <ul>

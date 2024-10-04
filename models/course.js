@@ -14,10 +14,6 @@ const courseSchema = new Schema({
     type: String,
     default: "/assets/default-course-image.jpg",
   },
-  author: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
   price: {
     type: Number,
     required: true,
@@ -26,7 +22,10 @@ const courseSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  rating: [],
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 module.exports = mongoose.model("Course", courseSchema);

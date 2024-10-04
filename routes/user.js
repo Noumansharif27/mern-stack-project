@@ -11,10 +11,7 @@ router.post("/signin", async (req, res, next) => {
   try {
     let newUser = req.body.user;
 
-    let user = new User({
-      username: newUser.username,
-      email: newUser.email,
-    });
+    let user = new User({ ...user });
 
     let registeredUser = await User.register(user, newUser.password);
 
@@ -43,7 +40,7 @@ router.post(
     failureFlash: true,
   }),
   (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     req.flash("success", "Welcome back to Future Academy!");
     // res.locals.currentUser = req.user;
     console.log(res.locals.currentUser);

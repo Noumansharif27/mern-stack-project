@@ -65,14 +65,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/courses", courseRought);
-app.use("/", userRought);
-app.use("/", tutorRought);
-
 // Root Rought
 app.get("/", (req, res) => {
   res.send("Welcome to root");
 });
+
+app.use("/courses", courseRought);
+app.use("/", userRought);
+app.use("/", tutorRought);
 
 app.use("*", (req, res) => {
   res.render("error.ejs");

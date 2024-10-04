@@ -24,7 +24,6 @@ router.post("/", courseValidation, async (req, res) => {
   });
 
   newCourse.author = req.user._id;
-  console.log(req.user);
   await newCourse.save();
 
   // console.log(newCourse);
@@ -36,14 +35,14 @@ router.get("/:id/show", async (req, res) => {
   // console.log(id);
 
   let course = await Course.findById(id).populate("author");
-  console.log(course);
+  // course.author = req.user;
+
   res.render("show.ejs", { course });
 });
 
 router.get("/:id/edit", async (req, res) => {
   const { id } = req.params;
   let course = await Course.findById(id);
-  console.log(course);
   res.render("edit.ejs", { course });
 });
 
