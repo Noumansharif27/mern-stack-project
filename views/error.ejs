@@ -3,7 +3,7 @@
 <body>
   <div class="err-pg">
     <img src="/assets/err-logo.gif" class="err-logo" />
-    <h1 class="err-message">page not found</h1>
-    <p class="err-code">ERROR - 404</p>
+    <p class="err-message"><%= err.message %></p>
+    <p class="err-code"><%= err.statusCode %></p>
   </div>
 </body>

@@ -1,22 +1,36 @@
 <nav class="nav-bar">
-  <img src="/assets/logo.svg" class="brand-logo" />
+  <img src="/assets/dark-brand-logo.svg" class="brand-logo" />
   <a href="/courses" class="categories">Home</a>
-  <input type="text" class="search-bar" placeholder="Search for anything" />
+
+  <!-- search-bar -->
+  <div class="search">
+    <input type="text" class="search-bar" placeholder="Search for anything" />
+    <img src="/assets/search-icon.svg" class="search-icon" />
+  </div>
   <% if (!currentUser) { %>
-  <a href="/signin" class="fa-bussiness">Sign In</a>
-  <a href="/login" class="tech-on-fa">Login</a>
+  <a href="/signin" class="fa-bussiness"> Sign In</a>
+  <a href="/login" class="tech-on-fa"> Login</a>
 
   <% } %> <% if (currentUser) { %>
   <a href="/logout" class="tech-on-fa">Logout</a>
-  <a href="/show" class="fa-user-learning">My learning</a>
+  <a href="/users/:id/learnings" class="fa-user-learning">My learning</a>
   <a href="/courses/new">Create course</a>
   <% } %>
   <a href="/tutor" class="fa-user-learning">Become Tutor</a>
 
   <div class="icons">
     <!-- <img src="/assets/insta.svg" alt="instagram" /> -->
-    <img src="/assets/linkedin.svg" alt="linkedin" />
-    <img src="/assets/dribbble.svg" alt="snapchat" />
-    <img src="/assets/my-avatar.png" alt="avatar" />
+    <a href="#">
+      <img src="/assets/heart.svg" class="nav-icons" />
+    </a>
+    <a href="#">
+      <img src="/assets/booking-cart.svg" class="nav-icons" />
+    </a>
+    <a href="#">
+      <img src="/assets/reward.svg" class="nav-icons" />
+    </a>
+    <a href="#">
+      <img src="/assets/user-profile.svg" class="nav-icons" />
+    </a>
   </div>
 </nav>

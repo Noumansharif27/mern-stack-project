@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user.js");
 const passport = require("passport");
+const { wrapAsync } = require("../utils/wrapAsync.js");
 
 router.get("/signin", (req, res) => {
-  res.render("signin.ejs");
+  res.render("user/signin.ejs");
 });
 
 router.post("/signin", async (req, res, next) => {
@@ -30,7 +31,7 @@ router.post("/signin", async (req, res, next) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login.ejs");
+  res.render("user/login.ejs");
 });
 
 router.post(
@@ -59,5 +60,12 @@ router.get("/logout", (req, res, next) => {
     res.redirect("/courses");
   });
 });
+
+router.get(
+  "/users/:id/learnings",
+  wrapAsync((req, res, next) => {
+    res.send("your learning learings");
+  })
+);
 
 module.exports = router;

@@ -12,6 +12,7 @@ const LocalStrategy = require("passport-local");
 const courseRought = require("./routes/course.js");
 const userRought = require("./routes/user.js");
 const tutorRought = require("./routes/tutor.js");
+const ExpressError = require("./utils/middleware.js");
 
 const app = express();
 const port = 8080;
@@ -76,6 +77,13 @@ app.use("/", tutorRought);
 
 app.use("*", (req, res) => {
   res.render("error.ejs");
+});
+
+// Error handler
+app.use((err, req, res, next) => {
+  let { statusCode = 400, message = "Something went wrong" } = err;
+  console.log(err);
+  res.status(statusCode).render("error.ejs", { err });
 });
 
 app.listen(port, () => {
