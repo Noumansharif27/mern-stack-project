@@ -991,13 +991,34 @@ img {
   height: 100%;
 }
 
-.tutor-rating h2 {
+/* Review */
+
+.tutor-review h2 {
   font-size: 1.8rem;
   margin-top: 2rem;
 }
 
-.tutor-rating span {
+.tutor-review span {
   color: #ff9d00;
+}
+
+.tutor-review .review-comment textarea {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border: 1px solid var(--universal-bg-dark-color);
+}
+
+.tutor-review .review-btn {
+  width: 6rem;
+}
+
+.tutor-review .review-btn:hover {
+  color: var(--universal-bg-dark-color);
+  background-color: transparent;
+  border-color: var(--universal-bg-dark-color);
 }
 
 /* Error Pg */

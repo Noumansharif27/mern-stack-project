@@ -25,17 +25,14 @@
         <img src="/assets/play-icon.svg" class="play-icon" />
       </div>
       <h3 class="card-status"><%= course.description %></h3>
-      <% if(currentUser && course.author._id.equals(currentUser._id)) { %>
+      <% if(currentUser && currentUser._id .equals(course.author._id)) { %>
       <form action="/courses/<%= course._id %>/edit" method="get">
         <button class="card-purchase-btn btn btn-2">Edit course</button>
       </form>
-      <% } %> <% if(!currentUser) { %>
+      <% } %>
       <button class="card-purchase-btn btn btn-2">Purchase course</button>
-      <% } %>
       <!-- <button class="card-purchase-btn">Go to course</button> -->
-      <% if(currentUser && course.author._id.equals(currentUser._id)) { %>
       <span class="guarante-label">30-Day-Money-Back-Guarrantee</span>
-      <% } %>
       <div class="card-content-details">
         <h4>This curse includes:</h4>
         <ul>
@@ -218,9 +215,79 @@
       </p>
     </div>
 
-    <div class="tutor-rating">
+    <div class="tutor-review">
       <h2><span>&starf;</span> 3.8 course rating | 97 rating</h2>
       <hr />
+
+      <form
+        action="/courses/<%= course._id %>/review"
+        method="post"
+        class="tutor-review-form"
+      >
+        <h3>Add A Review</h3>
+        <div class="">
+          <label for="rating">Rating</label>
+          <fieldset class="starability-slot">
+            <!-- <legend>First rating:</legend> -->
+            <input
+              type="radio"
+              id="no-rate"
+              id="rating"
+              class="input-no-rate"
+              name="reviews[rating]"
+              value="1"
+              checked
+              aria-label="No rating."
+            />
+            <input
+              type="radio"
+              id="first-rate1"
+              name="reviews[rating]"
+              value="1"
+              checked
+            />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input
+              type="radio"
+              id="first-rate2"
+              name="reviews[rating]"
+              value="2"
+            />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input
+              type="radio"
+              id="first-rate3"
+              name="reviews[rating]"
+              value="3"
+            />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input
+              type="radio"
+              id="first-rate4"
+              name="reviews[rating]"
+              value="4"
+            />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input
+              type="radio"
+              id="first-rate5"
+              name="reviews[rating]"
+              value="5"
+            />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+        </div>
+        <div class="review-comment">
+          <textarea
+            name="review[comment]"
+            class="comment"
+            cols="80"
+            rows="8"
+            placeholder="Write your geniune thoughts about this course."
+          ></textarea>
+        </div>
+        <button class="btn btn-2 review-btn">Add Review</button>
+      </form>
     </div>
   </div>
 </body>

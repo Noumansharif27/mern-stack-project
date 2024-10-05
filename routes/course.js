@@ -37,10 +37,15 @@ router.get(
   "/:id/show",
   wrapAsync(async (req, res) => {
     const { id } = req.params;
-    // console.log(id);
+    console.log(id);
 
     let course = await Course.findById(id).populate("author");
-    // course.author = req.user;
+    console.log(course.author);
+
+    if (!course) {
+      req.flash("error", "Course you are looking for does not exists.");
+      res.redirect("/courses");
+    }
 
     res.render("course/show.ejs", { course });
   })

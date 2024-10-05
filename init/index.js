@@ -17,9 +17,10 @@ async function main() {
 async function initDB() {
   await Course.deleteMany({});
 
-  // initData.data = initData.data.map((obj) => ({
-  //   ...obj,
-  // }));
+  initData.data = initData.data.map((obj) => ({
+    ...obj,
+    author: "66febda2e79dc0987d4fbd2f",
+  }));
   await Course.insertMany(initData.data);
   console.log("data was initilize.");
 }

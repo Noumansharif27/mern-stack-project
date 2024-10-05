@@ -12,7 +12,7 @@ const LocalStrategy = require("passport-local");
 const courseRought = require("./routes/course.js");
 const userRought = require("./routes/user.js");
 const tutorRought = require("./routes/tutor.js");
-const ExpressError = require("./utils/middleware.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 const app = express();
 const port = 8080;
