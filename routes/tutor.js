@@ -3,10 +3,12 @@ const router = express.Router();
 const Tutor = require("../models/tutor.js");
 const { wrapAsync } = require("../utils/wrapAsync.js");
 
+// Tutor Sign In Rought
 router.get("/tutor", (req, res) => {
   res.render("tutor/tutor.ejs");
 });
 
+// Tutor Rought
 router.post(
   "/tutor",
   wrapAsync(async (req, res) => {

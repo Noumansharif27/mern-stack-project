@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
 const Course = require("../models/course.js");
-const { courseValidation } = require("../utils/middleware.js");
+const {
+  courseValidation,
+  isLogedIn,
+  isOwner,
+} = require("../utils/middleware.js");
 const { ExpressError } = require("../utils/middleware.js");
 const { wrapAsync } = require("../utils/wrapAsync.js");
 
@@ -13,58 +17,54 @@ router.get("/", async (req, res) => {
 });
 
 // New Rought
-router.get("/new", (req, res) => {
+router.get("/new", isLogedIn, (req, res) => {
   res.render("course/new.ejs");
 });
 
-router.post("/", courseValidation, async (req, res) => {
+// New Post Rrout
+router.post("/", isLogedIn, courseValidation, async (req, res) => {
   const course = req.body.course;
   // console.log(course);
 
+  // If the course image field is emptyo set default image
+  if (!course.image) {
+    course.image = "/assets/default-course-image.jpg";
+  }
   let newCourse = new Course({
     ...course,
   });
-
   newCourse.author = req.user._id;
   await newCourse.save();
 
-  // console.log(newCourse);
+  req.flash("success", "Course created successfully!");
   res.redirect("/courses");
 });
 
 // Show Rought
-router.get(
-  "/:id/show",
-  wrapAsync(async (req, res) => {
-    const { id } = req.params;
-    console.log(id);
+router.get("/:id/show", async (req, res) => {
+  const { id } = req.params;
 
-    let course = await Course.findById(id).populate("author");
-    console.log(course.author);
-
-    if (!course) {
-      req.flash("error", "Course you are looking for does not exists.");
-      res.redirect("/courses");
-    }
-
-    res.render("course/show.ejs", { course });
-  })
-);
+  let course = await Course.findById(id).populate("author");
+  if (!course) {
+    req.flash("error", "Course you are looking for does not exists.");
+    res.redirect("/courses");
+  }
+  res.render("course/show.ejs", { course });
+});
 
 // Edit Rought
-router.get(
-  "/:id/edit",
-  wrapAsync(async (req, res) => {
-    const { id } = req.params;
-    let course = await Course.findById(id);
-    res.render("course/edit.ejs", { course });
-  })
-);
+router.get("/:id/edit", isLogedIn, isOwner, async (req, res) => {
+  const { id } = req.params;
+  let course = await Course.findById(id);
+  res.render("course/edit.ejs", { course });
+});
 
 router.post(
   "/:id/edit",
+  isLogedIn,
+  isOwner,
   courseValidation,
-  wrapAsync(async (req, res) => {
+  wrapAsync(async (req, res, next) => {
     if (!req.body.course) {
       throw new ExpressError(400, "Bad request");
     }
@@ -75,5 +75,16 @@ router.post(
     res.redirect(`/courses/${id}/show`);
   })
 );
+
+// Destroy Rought
+router.delete("/:id", isLogedIn, isOwner, async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  const result = await Course.findByIdAndDelete(id);
+  console.log(result);
+
+  req.flash("success", "Course deleted successfully!");
+  res.redirect("/courses");
+});
 
 module.exports = router;

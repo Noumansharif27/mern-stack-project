@@ -10,7 +10,7 @@
       </h5>
     </div>
     <div class="course-author">
-      Created by <a href="#">@Lorem, ipsum dolor. </a>
+      Created by <a href="#">@<%= course.author.username %></a>
     </div>
     <div class="course-additional-details">
       <p>
@@ -29,9 +29,13 @@
       <form action="/courses/<%= course._id %>/edit" method="get">
         <button class="card-purchase-btn btn btn-2">Edit course</button>
       </form>
+      <form action="/courses/<%= course._id%>?_method=DELETE" method="post">
+        <button class="card-purchase-btn btn btn-2" type="submit">
+          Delete Course
+        </button>
+      </form>
       <% } %>
       <button class="card-purchase-btn btn btn-2">Purchase course</button>
-      <!-- <button class="card-purchase-btn">Go to course</button> -->
       <span class="guarante-label">30-Day-Money-Back-Guarrantee</span>
       <div class="card-content-details">
         <h4>This curse includes:</h4>
@@ -220,8 +224,8 @@
       <hr />
 
       <form
-        action="/courses/<%= course._id %>/review"
-        method="post"
+        action="/courses/<%= course._id %>/reviews"
+        method="get"
         class="tutor-review-form"
       >
         <h3>Add A Review</h3>
@@ -234,7 +238,7 @@
               id="no-rate"
               id="rating"
               class="input-no-rate"
-              name="reviews[rating]"
+              name="rating"
               value="1"
               checked
               aria-label="No rating."
@@ -242,44 +246,24 @@
             <input
               type="radio"
               id="first-rate1"
-              name="reviews[rating]"
+              name="rating"
               value="1"
               checked
             />
             <label for="first-rate1" title="Terrible">1 star</label>
-            <input
-              type="radio"
-              id="first-rate2"
-              name="reviews[rating]"
-              value="2"
-            />
+            <input type="radio" id="first-rate2" name="rating" value="2" />
             <label for="first-rate2" title="Not good">2 stars</label>
-            <input
-              type="radio"
-              id="first-rate3"
-              name="reviews[rating]"
-              value="3"
-            />
+            <input type="radio" id="first-rate3" name="rating" value="3" />
             <label for="first-rate3" title="Average">3 stars</label>
-            <input
-              type="radio"
-              id="first-rate4"
-              name="reviews[rating]"
-              value="4"
-            />
+            <input type="radio" id="first-rate4" name="rating" value="4" />
             <label for="first-rate4" title="Very good">4 stars</label>
-            <input
-              type="radio"
-              id="first-rate5"
-              name="reviews[rating]"
-              value="5"
-            />
+            <input type="radio" id="first-rate5" name="rating" value="5" />
             <label for="first-rate5" title="Amazing">5 stars</label>
           </fieldset>
         </div>
         <div class="review-comment">
           <textarea
-            name="review[comment]"
+            name="comment"
             class="comment"
             cols="80"
             rows="8"

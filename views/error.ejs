@@ -1,11 +1,9 @@
 <% layout("/layouts/boilerplate") %>
 
 <body>
-  <% if(err) { %>
   <div class="err-pg">
     <img src="/assets/err-logo.gif" class="err-logo" />
     <p class="err-message"><%= err.message %></p>
     <p class="err-code"><%= err.statusCode %></p>
   </div>
-  <% } %>
 </body>

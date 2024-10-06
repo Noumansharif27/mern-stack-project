@@ -9,10 +9,13 @@ const Course = require("./models/course.js");
 const Tutor = require("./models/tutor.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const ExpressError = require("./utils/ExpressError.js");
+const methodOverride = require("method-override");
+
 const courseRought = require("./routes/course.js");
 const userRought = require("./routes/user.js");
 const tutorRought = require("./routes/tutor.js");
-const ExpressError = require("./utils/ExpressError.js");
+const reviewRought = require("./routes/review.js");
 
 const app = express();
 const port = 8080;
@@ -33,6 +36,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(methodOverride("_method"));
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -43,7 +47,6 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate())); // It will make sure to add the user.
 passport.serializeUser(User.serializeUser()); // It is use to store user on session aaafter Sign-in/Log-in.
 passport.deserializeUser(User.deserializeUser());
-// app.use(methodOverride("_method"));
 
 app.engine("ejs", ejsMate);
 
@@ -74,6 +77,7 @@ app.get("/", (req, res) => {
 app.use("/courses", courseRought);
 app.use("/", userRought);
 app.use("/", tutorRought);
+app.use("/courses/:id/reviews", reviewRought);
 
 app.use("*", (req, res) => {
   res.render("error.ejs");

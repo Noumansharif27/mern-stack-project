@@ -4,17 +4,19 @@ const User = require("../models/user.js");
 const passport = require("passport");
 const { wrapAsync } = require("../utils/wrapAsync.js");
 
+// Sign In Rought
 router.get("/signin", (req, res) => {
   res.render("user/signin.ejs");
 });
 
+// Sign In Post Rought
 router.post("/signin", async (req, res, next) => {
   try {
-    let newUser = req.body.user;
+    // let newUser = req.body.user;
+    let { username, email, password } = req.body.user;
+    let user = new User({ username, email });
 
-    let user = new User({ ...user });
-
-    let registeredUser = await User.register(user, newUser.password);
+    let registeredUser = await User.register(user, password);
 
     req.login(registeredUser, (err) => {
       if (err) {
@@ -30,10 +32,12 @@ router.post("/signin", async (req, res, next) => {
   }
 });
 
+// Login Rought
 router.get("/login", (req, res) => {
   res.render("user/login.ejs");
 });
 
+// Login Post Rought
 router.post(
   "/login",
   passport.authenticate("local", {
@@ -43,8 +47,6 @@ router.post(
   (req, res) => {
     // console.log(req.user);
     req.flash("success", "Welcome back to Future Academy!");
-    // res.locals.currentUser = req.user;
-    console.log(res.locals.currentUser);
     res.redirect("/courses");
   }
 );
@@ -61,6 +63,7 @@ router.get("/logout", (req, res, next) => {
   });
 });
 
+// Users Rought
 router.get(
   "/users/:id/learnings",
   wrapAsync((req, res, next) => {

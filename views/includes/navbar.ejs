@@ -1,5 +1,7 @@
 <nav class="nav-bar">
-  <img src="/assets/dark-brand-logo.svg" class="brand-logo" />
+  <a href="/courses">
+    <img src="/assets/dark-brand-logo.svg" class="brand-logo"
+  /></a>
   <a href="/courses" class="categories">Home</a>
 
   <!-- search-bar -->
@@ -14,8 +16,8 @@
   <% } %> <% if (currentUser) { %>
   <a href="/logout" class="tech-on-fa">Logout</a>
   <a href="/users/:id/learnings" class="fa-user-learning">My learning</a>
-  <a href="/courses/new">Create course</a>
   <% } %>
+  <a href="/courses/new">Create course</a>
   <a href="/tutor" class="fa-user-learning">Become Tutor</a>
 
   <div class="icons">
