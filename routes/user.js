@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user.js");
 const passport = require("passport");
-const { wrapAsync } = require("../utils/wrapAsync.js");
+const wrapAsync = require("../utils/wrapAsync.js");
 
 // Sign In Rought
 router.get("/signin", (req, res) => {
@@ -45,7 +45,6 @@ router.post(
     failureFlash: true,
   }),
   (req, res) => {
-    // console.log(req.user);
     req.flash("success", "Welcome back to Future Academy!");
     res.redirect("/courses");
   }

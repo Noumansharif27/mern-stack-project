@@ -1,277 +1,331 @@
 <% layout("/layouts/boilerplate") %>
 <body class="show-course-pg">
-  <div class="course-details">
-    <h1 class="course-title"><%= course.title %></h1>
-    <p class="course-description"><%= course.description %></p>
-    <div class="course-rating">
-      <h5>
-        3.8 <span>&starf;&starf;&starf;&starf;&star;</span>
-        <a href="#">(9.7 rating)</a> 21,012 students
-      </h5>
-    </div>
-    <div class="course-author">
-      Created by <a href="#">@<%= course.author.username %></a>
-    </div>
-    <div class="course-additional-details">
-      <p>
-        <span>Last updated 1/2023</span> <span>English</span>
-        <span>English (auto)</span>
-      </p>
-    </div>
-
-    <div class="show-course-card">
-      <div class="card-image">
-        <img src="<%= course.image %>" alt="" />
-        <img src="/assets/play-icon.svg" class="play-icon" />
+  <main>
+    <div class="course-details">
+      <h1 class="course-title"><%= course.title %></h1>
+      <p class="course-description"><%= course.description %></p>
+      <div class="course-rating">
+        <h5>
+          3.8 <span>&starf;&starf;&starf;&starf;&star;</span>
+          <a href="#">(9.7 rating)</a> 21,012 students
+        </h5>
       </div>
-      <h3 class="card-status"><%= course.description %></h3>
-      <% if(currentUser && currentUser._id .equals(course.author._id)) { %>
-      <form action="/courses/<%= course._id %>/edit" method="get">
-        <button class="card-purchase-btn btn btn-2">Edit course</button>
-      </form>
-      <form action="/courses/<%= course._id%>?_method=DELETE" method="post">
-        <button class="card-purchase-btn btn btn-2" type="submit">
-          Delete Course
-        </button>
-      </form>
-      <% } %>
-      <button class="card-purchase-btn btn btn-2">Purchase course</button>
-      <span class="guarante-label">30-Day-Money-Back-Guarrantee</span>
-      <div class="card-content-details">
-        <h4>This curse includes:</h4>
-        <ul>
-          <li>
-            <img src="/assets/play-icon.svg" alt="" /> 1 Hour on demand lectures
-          </li>
-          <li><img src="/assets/exams.svg" alt="" /> Practice exams</li>
-          <li>
-            <img src="/assets/clipboard.svg" alt="" /> Labs with passing marks
-          </li>
-          <li>
-            <img src="/assets/ppt.svg" alt="" /> Theory and practical examples
-          </li>
-          <li><img src="/assets/ppt.svg" alt="" /> Articles</li>
-          <li><img src="/assets/doc.svg" alt="" /> Research pappers</li>
-        </ul>
-        <div class="social-options">
-          <h5 class="share">Share</h5>
-          <h5>Gift this course</h5>
-          <h5>Apply cupons</h5>
+      <div class="course-author">
+        Created by <a href="#">@<%= course.author.username %></a>
+      </div>
+      <div class="course-additional-details">
+        <p>
+          <span>Last updated 1/2023</span> <span>English</span>
+          <span>English (auto)</span>
+        </p>
+      </div>
+
+      <div class="show-course-card">
+        <div class="card-image">
+          <img src="<%= course.image %>" alt="" />
+          <img src="/assets/play-icon.svg" class="play-icon" />
+        </div>
+        <h3 class="card-status"><%= course.description %></h3>
+        <% if(currentUser && currentUser._id .equals(course.author._id)) { %>
+        <form action="/courses/<%= course._id %>/edit" method="get">
+          <button class="card-purchase-btn btn btn-2">Edit course</button>
+        </form>
+        <form action="/courses/<%= course._id%>?_method=DELETE" method="post">
+          <button class="card-purchase-btn btn btn-2" type="submit">
+            Delete Course
+          </button>
+        </form>
+        <% } %>
+        <button class="card-purchase-btn btn btn-2">Purchase course</button>
+        <span class="guarante-label">30-Day-Money-Back-Guarrantee</span>
+        <div class="card-content-details">
+          <h4>This curse includes:</h4>
+          <ul>
+            <li>
+              <img src="/assets/play-icon.svg" alt="" /> 1 Hour on demand
+              lectures
+            </li>
+            <li><img src="/assets/exams.svg" alt="" /> Practice exams</li>
+            <li>
+              <img src="/assets/clipboard.svg" alt="" /> Labs with passing marks
+            </li>
+            <li>
+              <img src="/assets/ppt.svg" alt="" /> Theory and practical examples
+            </li>
+            <li><img src="/assets/ppt.svg" alt="" /> Articles</li>
+            <li><img src="/assets/doc.svg" alt="" /> Research pappers</li>
+          </ul>
+          <div class="social-options">
+            <h5 class="share">Share</h5>
+            <h5>Gift this course</h5>
+            <h5>Apply cupons</h5>
+          </div>
+        </div>
+
+        <div class="card-teaching-offer">
+          <h3>Training 5 or more people?</h3>
+          <p>
+            Training 5 or more peolpe? Get your team access to Future Academy
+            with 10k+ premium courses.
+          </p>
+          <form action="/tutor" method="get">
+            <button class="btn btn-2">Try FA Bussiness</button>
+          </form>
         </div>
       </div>
-
-      <div class="card-teaching-offer">
-        <h3>Training 5 or more people?</h3>
-        <p>
-          Training 5 or more peolpe? Get your team access to Future Academy with
-          10k+ premium courses.
-        </p>
-        <form action="/tutor" method="get">
-          <button class="btn btn-2">Try FA Bussiness</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="course-content-details">
-    <h2>What you will learn</h2>
-    <div class="content">
-      <div class="first-content">
-        <p>&check; Lorem ipsum dolor sit.</p>
-        <p>&check; Lorem ipsum dolor sit amet.</p>
-      </div>
-      <div class="last-content">
-        <p>&check; Lorem ipsum dolor sit.</p>
-        <p>&check; Lorem ipsum dolor sit amet.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="related-topics">
-    <h2>Explore relative topics</h2>
-    <div class="topics">
-      <div class="topic-btn topic-1 btn btn-2">Lorem, ipsum dolor.</div>
-      <div class="topic-btn topic-2 btn btn-2">Lorem, ipsum dolor.</div>
-      <div class="topic-btn topic-3 btn btn-2">Lorem, ipsum dolor.</div>
-    </div>
-  </div>
-
-  <div class="course-content">
-    <div class="dropdown dropdown-1">
-      <select name="course-content" class="course-content-dropdown">
-        <option value="content-1">Introduction</option>
-        <option value="content-2">Getting Install all the tools</option>
-        <option value="content-2">Articles refrences</option>
-      </select>
-
-      <select name="course-content" class="course-content-dropdown">
-        <option value="content-1">Roadmap</option>
-        <option value="content-2">Online Q & A</option>
-        <option value="content-2">Git GitHub</option>
-      </select>
-
-      <select name="course-content" class="course-content-dropdown">
-        <option value="content-1">Final Project</option>
-        <option value="content-2">Deploying</option>
-        <option value="content-2">What next</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="requirements">
-    <h2>Requirements</h2>
-    <li>No prior knowledge required.</li>
-  </div>
-
-  <div class="course-detailed-description">
-    <h2>Description</h2>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae
-      eveniet earum odit nemo aspernatur? Minus corporis, laudantium qui
-      doloribus quam natus, accusamus ipsa reprehenderit, temporibus magni eos
-      voluptatem molestiae sunt at doloremque vel aut praesentium dolorem
-      incidunt eum! Doloribus perferendis aliquam ipsum. Neque voluptas
-      veritatis minima necessitatibus eum provident iure! Lorem ipsum, dolor sit
-      amet consectetur adipisicing elit. Molestiae eveniet earum odit nemo
-      aspernatur? Minus corporis, laudantium qui doloribus quam natus, accusamus
-      ipsa reprehenderit, temporibus magni eos voluptatem molestiae sunt at
-      doloremque vel aut praesentium dolorem incidunt eum! Doloribus perferendis
-      aliquam ipsum. Neque voluptas veritatis minima necessitatibus eum
-      provident iure!
-    </p>
-    <input type="checkbox" class="show-more-btn" />
-  </div>
-
-  <div class="suggested-courses">
-    <div class="course-1 course">
-      <div class="course-image"><img src="/assets/avatar-1.png" alt="" /></div>
-      <div class="course-title">
-        <h3>Lorem ipsum dolor sit amet dolor sit amet.</h3>
-      </div>
-      <div class="course-ratting">
-        <p>4.0 <span>&starf;</span></p>
-      </div>
-      <div class="course-students"><p>12,523 students</p></div>
-      <div class="course-pricing"><h4>$5.78</h4></div>
     </div>
 
-    <div class="course-1 course">
-      <div class="course-image"><img src="/assets/avatar-2.png" alt="" /></div>
-      <div class="course-title">
-        <h3>Lorem ipsum dolor sit amet dolor sit amet.</h3>
-      </div>
-      <div class="course-ratting">
-        <p>4.0 <span>&starf;</span></p>
-      </div>
-      <div class="course-students"><p>12,523 students</p></div>
-      <div class="course-pricing"><h4>$5.78</h4></div>
-    </div>
-
-    <div class="course-1 course">
-      <div class="course-image"><img src="/assets/avatar-3.png" alt="" /></div>
-      <div class="course-title">
-        <h3>Lorem ipsum dolor sit amet dolor sit amet.</h3>
-      </div>
-      <div class="course-ratting">
-        <p>4.0 <span>&starf;</span></p>
-      </div>
-      <div class="course-students"><p>12,523 students</p></div>
-      <div class="course-pricing"><h4>$5.78</h4></div>
-    </div>
-
-    <div class="course-1 course">
-      <div class="course-image"><img src="/assets/avatar-4.png" alt="" /></div>
-      <div class="course-title">
-        <h3>Lorem ipsum dolor sit amet dolor sit amet.</h3>
-      </div>
-      <div class="course-ratting">
-        <p>4.0 <span>&starf;</span></p>
-      </div>
-      <div class="course-students"><p>12,523 students</p></div>
-      <div class="course-pricing"><h4>$5.78</h4></div>
-    </div>
-
-    <button class="btn btn-2">Show more</button>
-  </div>
-
-  <div class="tutor-info">
-    <h2>Tutor</h2>
-    <h4><a href="#">Lorem ipsum dolor.</a></h4>
-    <div class="role"><span>Programmer</span></div>
-    <div class="profile">
-      <div class="profile-image">
-        <img src="/assets/avatar-4.png" alt="" />
-      </div>
-      <div class="profile-details">
-        <p>&starf; 4.3 Instructor Rating</p>
-        <p>&starf; 4.3 Instructor Rating</p>
-        <p>&starf; 4.3 Instructor Rating</p>
-        <p>&starf; 4.3 Instructor Rating</p>
+    <div class="course-content-details">
+      <h2>What you will learn</h2>
+      <div class="content">
+        <div class="first-content">
+          <p>&check; Lorem ipsum dolor sit.</p>
+          <p>&check; Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="last-content">
+          <p>&check; Lorem ipsum dolor sit.</p>
+          <p>&check; Lorem ipsum dolor sit amet.</p>
+        </div>
       </div>
     </div>
 
-    <div class="tutor-description">
+    <div class="related-topics">
+      <h2>Explore relative topics</h2>
+      <div class="topics">
+        <div class="topic-btn topic-1 btn btn-2">Lorem, ipsum dolor.</div>
+        <div class="topic-btn topic-2 btn btn-2">Lorem, ipsum dolor.</div>
+        <div class="topic-btn topic-3 btn btn-2">Lorem, ipsum dolor.</div>
+      </div>
+    </div>
+
+    <div class="course-content">
+      <div class="dropdown dropdown-1">
+        <select name="course-content" class="course-content-dropdown">
+          <option value="content-1">Introduction</option>
+          <option value="content-2">Getting Install all the tools</option>
+          <option value="content-2">Articles refrences</option>
+        </select>
+
+        <select name="course-content" class="course-content-dropdown">
+          <option value="content-1">Roadmap</option>
+          <option value="content-2">Online Q & A</option>
+          <option value="content-2">Git GitHub</option>
+        </select>
+
+        <select name="course-content" class="course-content-dropdown">
+          <option value="content-1">Final Project</option>
+          <option value="content-2">Deploying</option>
+          <option value="content-2">What next</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="requirements">
+      <h2>Requirements</h2>
+      <li>No prior knowledge required.</li>
+    </div>
+
+    <div class="course-detailed-description">
       <h2>Description</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio culpa sed
-        nihil autem aliquid adipisci rem recusandae ea nemo amet, quas
-        aspernatur, sapiente enim quod.
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae
+        eveniet earum odit nemo aspernatur? Minus corporis, laudantium qui
+        doloribus quam natus, accusamus ipsa reprehenderit, temporibus magni eos
+        voluptatem molestiae sunt at doloremque vel aut praesentium dolorem
+        incidunt eum! Doloribus perferendis aliquam ipsum. Neque voluptas
+        veritatis minima necessitatibus eum provident iure! Lorem ipsum, dolor
+        sit amet consectetur adipisicing elit. Molestiae eveniet earum odit nemo
+        aspernatur? Minus corporis, laudantium qui doloribus quam natus,
+        accusamus ipsa reprehenderit, temporibus magni eos voluptatem molestiae
+        sunt at doloremque vel aut praesentium dolorem incidunt eum! Doloribus
+        perferendis aliquam ipsum. Neque voluptas veritatis minima
+        necessitatibus eum provident iure!
       </p>
+      <input type="checkbox" class="show-more-btn" />
     </div>
 
-    <div class="tutor-review">
-      <h2><span>&starf;</span> 3.8 course rating | 97 rating</h2>
-      <hr />
+    <div class="suggested-courses">
+      <div class="course-1 course">
+        <div class="course-image">
+          <img src="/assets/avatar-1.png" alt="" />
+        </div>
+        <div class="course-title">
+          <h3>Lorem ipsum dolor sit amet dolor sit amet.</h3>
+        </div>
+        <div class="course-ratting">
+          <p>4.0 <span>&starf;</span></p>
+        </div>
+        <div class="course-students"><p>12,523 students</p></div>
+        <div class="course-pricing"><h4>$5.78</h4></div>
+      </div>
 
-      <form
-        action="/courses/<%= course._id %>/reviews"
-        method="get"
-        class="tutor-review-form"
-      >
-        <h3>Add A Review</h3>
-        <div class="">
-          <label for="rating">Rating</label>
-          <fieldset class="starability-slot">
-            <!-- <legend>First rating:</legend> -->
-            <input
-              type="radio"
-              id="no-rate"
-              id="rating"
-              class="input-no-rate"
-              name="rating"
-              value="1"
-              checked
-              aria-label="No rating."
-            />
-            <input
-              type="radio"
-              id="first-rate1"
-              name="rating"
-              value="1"
-              checked
-            />
-            <label for="first-rate1" title="Terrible">1 star</label>
-            <input type="radio" id="first-rate2" name="rating" value="2" />
-            <label for="first-rate2" title="Not good">2 stars</label>
-            <input type="radio" id="first-rate3" name="rating" value="3" />
-            <label for="first-rate3" title="Average">3 stars</label>
-            <input type="radio" id="first-rate4" name="rating" value="4" />
-            <label for="first-rate4" title="Very good">4 stars</label>
-            <input type="radio" id="first-rate5" name="rating" value="5" />
-            <label for="first-rate5" title="Amazing">5 stars</label>
-          </fieldset>
+      <div class="course-1 course">
+        <div class="course-image">
+          <img src="/assets/avatar-2.png" alt="" />
         </div>
-        <div class="review-comment">
-          <textarea
-            name="comment"
-            class="comment"
-            cols="80"
-            rows="8"
-            placeholder="Write your geniune thoughts about this course."
-          ></textarea>
+        <div class="course-title">
+          <h3>Lorem ipsum dolor sit amet dolor sit amet.</h3>
         </div>
-        <button class="btn btn-2 review-btn">Add Review</button>
-      </form>
+        <div class="course-ratting">
+          <p>4.0 <span>&starf;</span></p>
+        </div>
+        <div class="course-students"><p>12,523 students</p></div>
+        <div class="course-pricing"><h4>$5.78</h4></div>
+      </div>
+
+      <div class="course-1 course">
+        <div class="course-image">
+          <img src="/assets/avatar-3.png" alt="" />
+        </div>
+        <div class="course-title">
+          <h3>Lorem ipsum dolor sit amet dolor sit amet.</h3>
+        </div>
+        <div class="course-ratting">
+          <p>4.0 <span>&starf;</span></p>
+        </div>
+        <div class="course-students"><p>12,523 students</p></div>
+        <div class="course-pricing"><h4>$5.78</h4></div>
+      </div>
+
+      <div class="course-1 course">
+        <div class="course-image">
+          <img src="/assets/avatar-4.png" alt="" />
+        </div>
+        <div class="course-title">
+          <h3>Lorem ipsum dolor sit amet dolor sit amet.</h3>
+        </div>
+        <div class="course-ratting">
+          <p>4.0 <span>&starf;</span></p>
+        </div>
+        <div class="course-students"><p>12,523 students</p></div>
+        <div class="course-pricing"><h4>$5.78</h4></div>
+      </div>
+
+      <button class="btn btn-2">Show more</button>
     </div>
-  </div>
+
+    <div class="tutor-info">
+      <h2>Tutor</h2>
+      <h4><a href="#"><%= course.author.username %>.</a></h4>
+      <div class="role"><span>Programmer</span></div>
+      <div class="profile">
+        <div class="profile-image">
+          <img src="/assets/avatar-4.png" alt="" />
+        </div>
+        <div class="profile-details">
+          <p>&starf; 4.3 Instructor Rating</p>
+          <p>&starf; 4.3 Instructor Rating</p>
+          <p>&starf; 4.3 Instructor Rating</p>
+          <p>&starf; 4.3 Instructor Rating</p>
+        </div>
+      </div>
+
+      <div class="tutor-description">
+        <h2>Description</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio culpa
+          sed nihil autem aliquid adipisci rem recusandae ea nemo amet, quas
+          aspernatur, sapiente enim quod.
+        </p>
+      </div>
+
+      <div class="tutor-review">
+        <% if(course.reviews.length) {%>
+        <h2><span>&starf;</span> 3.8 course rating | 97 rating</h2>
+        <hr />
+        <% } %> <% if(!course.reviews.length) {%>
+        <hr />
+        <% } %> <% if(currentUser) {%>
+        <form
+          action="/courses/<%= course._id %>/reviews"
+          method="post"
+          class="tutor-review-form"
+        >
+          <h3>Add A Review</h3>
+          <div class="">
+            <label for="rating">Rating</label>
+            <fieldset class="starability-slot">
+              <!-- <legend>First rating:</legend> -->
+
+              <input
+                type="radio"
+                id="first-rate1"
+                name=" review[rating]"
+                value="1"
+                checked
+              />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input
+                type="radio"
+                id="first-rate2"
+                name="review[rating]"
+                value="2"
+              />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input
+                type="radio"
+                id="first-rate3"
+                name="review[rating]"
+                value="3"
+              />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input
+                type="radio"
+                id="first-rate4"
+                name="review[rating]"
+                value="4"
+              />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input
+                type="radio"
+                id="first-rate5"
+                name="review[rating]"
+                value="5"
+              />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+          </div>
+          <div class="review-comment">
+            <textarea
+              name="review[comment]"
+              class="comment"
+              cols="80"
+              rows="8"
+              placeholder="Write your geniune thoughts about this course."
+              required
+            ></textarea>
+          </div>
+          <button class="btn btn-2 review-btn">Add Review</button>
+        </form>
+        <hr />
+
+        <% } %> <% if(course.reviews.length) {%>
+        <h2>Reviews</h2>
+        <div class="posted-reviews">
+          <% for(review of course.reviews) {%>
+          <div class="posted-review">
+            <h3>@<%= review.author.username %></h3>
+            <p><%= review.comment %></p>
+            <div class="review-delete-btn">
+              <p
+                class="starability-result posted-review-rating"
+                data-rating="<%= review.rating %>"
+              ></p>
+              <% if(currentUser && currentUser._id.equals(review.author._id)) {
+              %>
+              <form
+                action="/courses/<%= course._id %>/reviews/<%= review._id %>?_method=DELETE"
+                method="post"
+              >
+                <button class="btn btn-2 review-btn">Delete</button>
+              </form>
+              <% } %>
+            </div>
+          </div>
+          <% } %>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </main>
 </body>

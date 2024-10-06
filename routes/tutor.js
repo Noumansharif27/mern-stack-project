@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Tutor = require("../models/tutor.js");
-const { wrapAsync } = require("../utils/wrapAsync.js");
+const wrapAsync = require("../utils/wrapAsync.js");
 
 // Tutor Sign In Rought
 router.get("/tutor", (req, res) => {

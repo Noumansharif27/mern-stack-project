@@ -629,7 +629,7 @@ img {
 .show-course-card {
   min-height: 130dvh;
   max-width: 25dvw;
-  border: 1px solid #fff;
+  border: 1px solid #efefef;
   position: sticky;
   left: 95%;
   top: 10;
@@ -641,9 +641,10 @@ img {
   padding: 0.0005rem;
   padding-right: 0.15rem;
   border-radius: 0.5rem;
-  background-color: #fff;
+  background-color: #efefef;
   overflow: hidden;
   margin-top: 10rem;
+  box-shadow: -10px -10px 20px -1px #24242470;
 }
 
 .show-course-card .card-image {
@@ -1020,6 +1021,37 @@ img {
   color: var(--universal-bg-dark-color);
   background-color: transparent;
   border-color: var(--universal-bg-dark-color);
+}
+
+.posted-reviews {
+  height: auto;
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2rem;
+  width: 60dvw;
+}
+
+.posted-reviews .posted-review {
+  min-height: 5rem;
+  width: 40%;
+  padding: 1rem;
+  border: 1px solid var(--universal-bg-dark-color);
+  border-radius: 0.5rem;
+}
+
+.review-delete-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-delete-btn .posted-review-rating {
+  transform: scale(0.8);
+}
+
+.review-delete-btn .btn {
+  min-width: 80%;
 }
 
 /* Error Pg */

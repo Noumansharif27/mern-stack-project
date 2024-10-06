@@ -5,11 +5,8 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("connect-flash");
 const User = require("./models/user.js");
-const Course = require("./models/course.js");
-const Tutor = require("./models/tutor.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const ExpressError = require("./utils/ExpressError.js");
 const methodOverride = require("method-override");
 
 const courseRought = require("./routes/course.js");
@@ -79,14 +76,13 @@ app.use("/", userRought);
 app.use("/", tutorRought);
 app.use("/courses/:id/reviews", reviewRought);
 
-app.use("*", (req, res) => {
+app.all("*", (req, res) => {
   res.render("error.ejs");
 });
 
 // Error handler
 app.use((err, req, res, next) => {
   let { statusCode = 400, message = "Something went wrong" } = err;
-  console.log(err);
   res.status(statusCode).render("error.ejs", { err });
 });
 

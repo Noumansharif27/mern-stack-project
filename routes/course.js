@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 const Course = require("../models/course.js");
 const {
-  courseValidation,
+  validateCourse,
   isLogedIn,
   isOwner,
 } = require("../utils/middleware.js");
 const { ExpressError } = require("../utils/middleware.js");
-const { wrapAsync } = require("../utils/wrapAsync.js");
+const wrapAsync = require("../utils/wrapAsync.js");
 
 // Index Rought
 router.get("/", async (req, res) => {
@@ -22,7 +22,7 @@ router.get("/new", isLogedIn, (req, res) => {
 });
 
 // New Post Rrout
-router.post("/", isLogedIn, courseValidation, async (req, res) => {
+router.post("/", isLogedIn, validateCourse, async (req, res) => {
   const course = req.body.course;
   // console.log(course);
 
@@ -44,7 +44,15 @@ router.post("/", isLogedIn, courseValidation, async (req, res) => {
 router.get("/:id/show", async (req, res) => {
   const { id } = req.params;
 
-  let course = await Course.findById(id).populate("author");
+  let course = await Course.findById(id)
+    .populate({
+      path: "reviews",
+      populate: {
+        path: "author",
+      },
+    })
+    .populate("author");
+
   if (!course) {
     req.flash("error", "Course you are looking for does not exists.");
     res.redirect("/courses");
@@ -59,11 +67,12 @@ router.get("/:id/edit", isLogedIn, isOwner, async (req, res) => {
   res.render("course/edit.ejs", { course });
 });
 
+// Edit Post Rought
 router.post(
   "/:id/edit",
   isLogedIn,
   isOwner,
-  courseValidation,
+  validateCourse,
   wrapAsync(async (req, res, next) => {
     if (!req.body.course) {
       throw new ExpressError(400, "Bad request");
