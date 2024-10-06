@@ -1,5 +1,6 @@
 const { courseSchema, reviewSchema } = require("../schemaValidation.js");
 const Course = require("../models/course.js");
+const ExpressError = require("./ExpressError.js");
 
 // Verification for User
 module.exports.isLogedIn = (req, res, next) => {
@@ -40,7 +41,7 @@ module.exports.validateCourse = (req, res, next) => {
         el.message;
       })
       .join(",");
-    req.flas("error", errorMsg);
+    req.flash("error", errorMsg);
     throw new ExpressError(400, errorMsg);
   } else {
     next();
@@ -49,14 +50,14 @@ module.exports.validateCourse = (req, res, next) => {
 
 // Review Schema Validator
 module.exports.validateReview = (req, res, next) => {
-  let { error } = reviewSchema.validate(req.body);
+  let { error } = reviewSchema.validate(req.body.review);
   if (error) {
     let errorMsg = error.details
       .map((el) => {
-        el.message;
+        return el.message;
       })
       .join(",");
-    req.flas("error", errorMsg);
+    req.flash("error", errorMsg);
     throw new ExpressError(400, errorMsg);
   } else {
     next();

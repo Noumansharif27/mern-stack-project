@@ -83,6 +83,7 @@ app.all("*", (req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   let { statusCode = 400, message = "Something went wrong" } = err;
+  console.log(err);
   res.status(statusCode).render("error.ejs", { err });
 });
 

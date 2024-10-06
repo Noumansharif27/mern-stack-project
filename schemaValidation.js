@@ -10,8 +10,13 @@ module.exports.courseSchema = Joi.object({
 });
 
 module.exports.reviewSchema = Joi.object({
-  review: Joi.object({
+  reviews: Joi.object({
     comment: Joi.string().required(),
-    rating: Joi.number().required().min(1),
+    rating: Joi.number().min(1),
   }).required(),
 });
+
+// module.exports.reviewSchema = Joi.object({
+//   comment: Joi.string().required(),
+//   rating: Joi.number().min(1),
+// });

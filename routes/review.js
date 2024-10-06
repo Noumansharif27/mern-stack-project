@@ -9,20 +9,33 @@ router.post(
   "/",
   validateReview,
   wrapAsync(async (req, res) => {
-    let { id } = req.params;
-    let course = await Course.findById(req.params.id);
-    let courseReview = new Review(req.body.review);
+    try {
+      const { id } = req.params;
+      const review = req.body.review;
+      const course = await Course.findById(req.params.id);
 
-    course.reviews.push(courseReview);
-    console.log(course);
+      if (!course) {
+        // Handle invalid course ID
+        req.flash("error", "Course not found");
+        return res.redirect("/courses"); // Pass to error handler
+      }
+      const courseReview = new Review(review);
 
-    courseReview.author = req.user._id;
+      course.reviews.push(courseReview);
+      console.log(course);
 
-    await courseReview.save();
-    await course.save();
+      courseReview.author = req.user._id;
 
-    req.flash("success", "Review Added!");
-    res.redirect(`/courses/${id}/show`);
+      await courseReview.save();
+      await course.save();
+
+      req.flash("success", "Review Added!");
+      res.redirect(`/courses/${id}/show`);
+    } catch (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("/courses");
+    }
   })
 );
 
