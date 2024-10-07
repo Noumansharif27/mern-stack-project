@@ -35,8 +35,10 @@
             Delete Course
           </button>
         </form>
-        <% } %>
+        <% } %> <% if(!currentUser || !currentUser._id
+        .equals(course.author._id)) { %>
         <button class="card-purchase-btn btn btn-2">Purchase course</button>
+        <% } %>
         <span class="guarante-label">30-Day-Money-Back-Guarrantee</span>
         <div class="card-content-details">
           <h4>This curse includes:</h4>
@@ -249,10 +251,13 @@
 
               <input
                 type="radio"
-                id="first-rate1"
-                name=" review[rating]"
+                id="no-rate"
+                id="rating"
+                class="input-no-rate"
+                name="review[rating]"
                 value="1"
                 checked
+                aria-label="No rating."
               />
               <label for="first-rate1" title="Terrible">1 star</label>
               <input
@@ -291,7 +296,8 @@
               class="comment"
               cols="80"
               rows="8"
-              placeholder="Write your geniune thoughts about this course."
+              placeholder="Write your geniune thoughts about this course. (150 words)"
+              maxlength="150"
               required
             ></textarea>
           </div>
@@ -305,7 +311,7 @@
           <% for(review of course.reviews) {%>
           <div class="posted-review">
             <h3>@<%= review.author.username %></h3>
-            <p><%= review.comment %></p>
+            <p class="posted-review-comment"><%= review.comment %></p>
             <div class="review-delete-btn">
               <p
                 class="starability-result posted-review-rating"

@@ -104,7 +104,7 @@
 
       <div class="recommended-course-cards">
         <% for(course of courses) { %>
-        <a href="/courses/<%= course._id %>/show" class="card-links">
+        <a href="/courses/<%= course._id %>" class="card-links">
           <div class="card" type="button">
             <div class="card-image">
               <img src="<%= course.image %>" alt="" />
@@ -126,7 +126,7 @@
       <h2>Popular for Full Stack Web Developer</h2>
       <div class="recommended-course-cards">
         <% for(course of courses) { %>
-        <a href="/courses/<%= course._id %>/show" class="card-links">
+        <a href="/courses/<%= course._id %>" class="card-links">
           <div class="card" type="button">
             <div class="card-image">
               <img src="<%= course.image %>" alt="" />
@@ -148,7 +148,7 @@
       <h2>Learners are viewing</h2>
       <div class="recommended-course-cards">
         <% for(course of courses) { %>
-        <a href="/courses/<%= course._id %>/show" class="card-links">
+        <a href="/courses/<%= course._id %>" class="card-links">
           <div class="card" type="button" role="button">
             <div class="card-image">
               <img src="<%= course.image %>" alt="" />

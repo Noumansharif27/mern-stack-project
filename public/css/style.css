@@ -12,6 +12,7 @@ body {
   width: 100dvw;
   background-color: #efefef;
   flex: 1;
+  position: relative;
 }
 
 :root {
@@ -549,19 +550,19 @@ img {
   min-height: 4rem;
   max-width: 60%;
   margin: auto;
-  border: 1px solid blue;
   border-radius: 0.5rem;
   padding: 0 2.5rem;
-  background-color: #333333;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* position: absolute;
-  top: 50%;
+  position: absolute;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, 0); */
+  transform: translate(-50%, 0);
   transition: all 2s ease-out 0.5;
   margin-bottom: 1rem;
+  gap: 2rem;
+  z-index: 99999;
 }
 
 .alerts .alert-success {
@@ -576,7 +577,8 @@ img {
   border: none;
   height: 1.75rem;
   min-width: 4rem;
-  mix-blend-mode: color-burn;
+  background-image: url(/assets/dark-cross.svg);
+  /* mix-blend-mode: color-burn; */
 }
 
 .alert-close-btn img {
@@ -1039,6 +1041,10 @@ img {
   padding: 1rem;
   border: 1px solid var(--universal-bg-dark-color);
   border-radius: 0.5rem;
+}
+
+.posted-review-comment {
+  width: 80%;
 }
 
 .review-delete-btn {

@@ -41,7 +41,7 @@ router.post("/", isLogedIn, validateCourse, async (req, res) => {
 });
 
 // Show Rought
-router.get("/:id/show", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
   let course = await Course.findById(id)
@@ -81,7 +81,7 @@ router.post(
     const { id } = req.params;
     let course = await Course.findByIdAndUpdate(id, { ...req.body.course });
     req.flash("success", "Course content edit successfully!");
-    res.redirect(`/courses/${id}/show`);
+    res.redirect(`/courses/${id}`);
   })
 );
 
