@@ -5,6 +5,7 @@ const Course = require("../models/course.js");
 const wrapAsync = require("../utils/wrapAsync");
 const { validateReview } = require("../utils/middleware.js");
 
+// Post Review Rought
 router.post(
   "/",
   validateReview,
@@ -39,6 +40,7 @@ router.post(
   })
 );
 
+// Destroy Rought
 router.delete(
   "/:reviewId",
   wrapAsync(async (req, res) => {
