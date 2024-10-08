@@ -5,6 +5,13 @@ let bannerCancelingAnimation = () => {
   closingBannerBtn.addEventListener("click", () => {
     banner.style.display = "none";
   });
+
+  let alert = document.querySelector(".alerts");
+  let alertSuccess = document.querySelector(".alerts.alert-success");
+
+  setTimeout(() => {
+    alert.style.top = "-50%";
+  }, 1200);
 };
 
 bannerCancelingAnimation();

@@ -1,6 +1,13 @@
 <% layout("/layouts/boilerplate") %>
 <body class="show-course-pg">
   <main>
+    <nav class="show-pg-nav">
+      <h3 class="show-nav-course-title"><%= course.title %></h3>
+      <h5>
+        <span class="golden">3.8 &starf;</span>
+        <a href="#">(9.7 rating)</a> 21,012 students
+      </h5>
+    </nav>
     <div class="course-details">
       <h1 class="course-title"><%= course.title %></h1>
       <p class="course-description"><%= course.description %></p>
@@ -26,19 +33,23 @@
           <img src="/assets/play-icon.svg" class="play-icon" />
         </div>
         <h3 class="card-status"><%= course.description %></h3>
-        <% if(currentUser && currentUser._id .equals(course.author._id)) { %>
-        <form action="/courses/<%= course._id %>/edit" method="get">
-          <button class="card-purchase-btn btn btn-2">Edit course</button>
-        </form>
-        <form action="/courses/<%= course._id%>?_method=DELETE" method="post">
-          <button class="card-purchase-btn btn btn-2" type="submit">
-            Delete Course
-          </button>
-        </form>
-        <% } %> <% if(!currentUser || !currentUser._id
-        .equals(course.author._id)) { %>
-        <button class="card-purchase-btn btn btn-2">Purchase course</button>
-        <% } %>
+        <div class="show-card-btns">
+          <% if(currentUser && currentUser._id .equals(course.author._id)) { %>
+          <form action="/courses/<%= course._id %>/edit" method="get">
+            <button class="card-purchase-btn btn btn-2">Edit course</button>
+          </form>
+          <form action="/courses/<%= course._id%>?_method=DELETE" method="post">
+            <button class="card-purchase-btn btn btn-2" type="submit">
+              Delete Course
+            </button>
+          </form>
+          <% } %> <% if(!currentUser || !currentUser._id
+          .equals(course.author._id)) { %>
+          <form action="/courses/<%= course._id%>/purchase" method="get">
+            <button class="card-purchase-btn btn btn-2">Purchase course</button>
+          </form>
+          <% } %>
+        </div>
         <span class="guarante-label">30-Day-Money-Back-Guarrantee</span>
         <div class="card-content-details">
           <h4>This curse includes:</h4>
@@ -235,9 +246,9 @@
         <% if(course.reviews.length) {%>
         <h2><span>&starf;</span> 3.8 course rating | 97 rating</h2>
         <hr />
-        <% } %> <% if(!course.reviews.length) {%>
+        <% } %> <% if(currentUser && !currentUser._id
+        .equals(course.author._id)) { %>
         <hr />
-        <% } %> <% if(currentUser) {%>
         <form
           action="/courses/<%= course._id %>/reviews"
           method="post"
@@ -310,7 +321,7 @@
         <div class="posted-reviews">
           <% for(review of course.reviews) {%>
           <div class="posted-review">
-            <h3>@<%= review.author.username %></h3>
+            <h3 class="posted-review-author">@<%= review.author.username %></h3>
             <p class="posted-review-comment"><%= review.comment %></p>
             <div class="review-delete-btn">
               <p

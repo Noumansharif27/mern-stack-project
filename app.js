@@ -74,7 +74,7 @@ app.get("/", (req, res) => {
 app.use("/courses", courseRought);
 app.use("/", userRought);
 app.use("/", tutorRought);
-app.use("/courses/:id/reviews", reviewRought);
+app.use("/courses/:courseId/reviews", reviewRought);
 
 app.all("*", (req, res) => {
   res.render("error.ejs");
@@ -83,6 +83,7 @@ app.all("*", (req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   let { statusCode = 400, message = "Something went wrong" } = err;
+  console.log(err);
   res.status(statusCode).render("error.ejs", { err });
 });
 

@@ -16,9 +16,9 @@ router.post(
   validateReview,
   wrapAsync(async (req, res) => {
     try {
-      const { id } = req.params;
+      const { courseId } = req.params;
       const review = req.body.review;
-      const course = await Course.findById(req.params.id);
+      const course = await Course.findById(req.params.courseId);
 
       if (!course) {
         // Handle invalid course ID
@@ -28,7 +28,6 @@ router.post(
       const courseReview = new Review(review);
 
       course.reviews.push(courseReview);
-      console.log(course);
 
       courseReview.author = req.user._id;
 
@@ -36,9 +35,8 @@ router.post(
       await course.save();
 
       req.flash("success", "Review Added!");
-      res.redirect(`/courses/${id}`);
+      res.redirect(`/courses/${courseId}`);
     } catch (err) {
-      console.log(err);
       req.flash("error", err.message);
       res.redirect("/courses");
     }
@@ -51,14 +49,14 @@ router.delete(
   isLogedIn,
   isReviewOwner,
   wrapAsync(async (req, res) => {
-    let { id, reviewId } = req.params;
-    await Course.findByIdAndUpdate(id, {
+    let { courseId, reviewId } = req.params;
+    await Course.findByIdAndUpdate(courseId, {
       $pull: { reviews: reviewId },
     });
     await Review.findByIdAndDelete(reviewId);
 
     req.flash("success", "Review Deleted!");
-    res.redirect(`/courses/${id}`);
+    res.redirect(`/courses/${courseId}`);
   })
 );
 

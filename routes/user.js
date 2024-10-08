@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require("../models/user.js");
 const passport = require("passport");
 const wrapAsync = require("../utils/wrapAsync.js");
+const Course = require("../models/course.js");
+const { isLogedIn } = require("../utils/middleware.js");
 
 // Sign In Rought
 router.get("/signin", (req, res) => {
@@ -56,7 +58,6 @@ router.get("/logout", (req, res, next) => {
     if (err) {
       next(err);
     }
-
     req.flash("success", "Logout successfully!");
     res.redirect("/courses");
   });
@@ -64,9 +65,18 @@ router.get("/logout", (req, res, next) => {
 
 // Users Rought
 router.get(
-  "/users/:id/learnings",
-  wrapAsync((req, res, next) => {
-    res.send("your learning learings");
+  "/users/:userId",
+  isLogedIn,
+  wrapAsync(async (req, res) => {
+    const { userId } = req.params;
+    const user = await User.findById(userId).populate({
+      path: "courses",
+      populate: {
+        path: "author",
+      },
+    });
+
+    res.render("user/learning.ejs", { user });
   })
 );
 

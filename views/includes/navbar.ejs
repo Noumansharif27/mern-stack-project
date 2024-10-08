@@ -15,7 +15,9 @@
 
   <% } %> <% if (currentUser) { %>
   <a href="/logout" class="tech-on-fa">Logout</a>
-  <a href="/users/:id/learnings" class="fa-user-learning">My learning</a>
+  <a href="/users/<%= currentUser._id %>/" class="fa-user-learning"
+    >My learning</a
+  >
   <% } %>
   <a href="/courses/new">Create course</a>
   <a href="/tutor" class="fa-user-learning">Become Tutor</a>

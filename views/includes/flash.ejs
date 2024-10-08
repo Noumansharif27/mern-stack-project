@@ -1,38 +1,18 @@
 <% if(success && success.length) { %>
-<div
-  class="alerts alert-success closing-banner"
-  style="
-    background-color: #63e479d5;
-    border-color: #68ff81d5;
-    color: #000;
-    backdrop-filter: blur(50px);
-  "
->
+<div class="alerts alert-success closing-banner">
   <%= success %>
   <button class="alert-close-btn closing-banner-btn">
-    <img src="/assets/dark-cross.svg" alt="alert-cross-btn" />
+    <img src="/assets/alert-cross.svg" alt="alert-cross-btn" />
   </button>
 </div>
 <% } %> <% if(error && error.length) { %>
-<div
-  class="alerts alert-error closing-banner"
-  style="
-    background-color: #fb6464e8;
-    border-color: #ff0000;
-    color: #000;
-    backdrop-filter: blur(50px);
-  "
->
+<div class="alerts alert-error closing-banner">
   <%= error %>
-  <button
-    class="alert-close-btn closing-banner-btn"
-    style="background-color: white"
-  >
+  <button class="alert-close-btn closing-banner-btn">
     <img
-      src="/assets/dark-cross.svg"
+      src="/assets/alert-cross.svg"
       class="light-alert-cross"
       alt="alert-close-btn"
-      style="background-color: pink"
     />
   </button>
 </div>

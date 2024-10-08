@@ -10,6 +10,12 @@ const userSchema = new Schema({
   role: {
     type: String,
   },
+  courses: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
 });
 
 userSchema.plugin(passportLocalMongoose);

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | Future Academy</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="conrainer">
+    <nav class="checkout-nav">
+      <a href="/courses">
+        <img
+          src="/assets/dark-brand-logo.svg"
+          alt="brand-logo"
+          class="checkout-nav-brand-logo"
+        />
+      </a>
+      <a href="/courses" class="cancel-btn"><strong>Cancel</strong></a>
+    </nav>
+    <section class="checkout-pg">
+      <div class="left-checkout">
+        <div class="content">
+          <h2>Checkout</h2>
+          <div class="course-price-card">
+            <div class="card-head"></div>
+            <div class="card-body">
+              <p>Your cart is free!</p>
+            </div>
+          </div>
+          <div class="order-details">
+            <h3>Order details</h3>
+            <div class="order-card">
+              <div class="card-left">
+                <img class="image" src="<%= course.image %>" />
+                <p class="order-title">
+                  <strong><%= course.title %></strong>
+                </p>
+              </div>
+              <p class="order-price">
+                Free
+                <span>$54.17</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-checkout">
+        <div class="course-pricing-card">
+          <h2>Summary</h2>
+          <div class="original-price">
+            <p>Original Price:</p>
+            <p>$54.17</p>
+          </div>
+          <div class="discount-price">
+            <p>Discoounts:</p>
+            <p>$54.17</p>
+          </div>
+          <hr />
+          <div class="total-price">
+            <p><strong>Total:</strong></p>
+            <p>$0.00</p>
+          </div>
+          <div class="terms">
+            <p>
+              By enrolling, you agree to these
+              <a href="#">Terms of Services.</a>
+            </p>
+          </div>
+          <form action="/courses/<%= course._id%>" method="post">
+            <button class="btn btn-2"><strong>Enroll now</strong></button>
+          </form>
+          <p class="money-back-guarantee">30-Days Money-Back Guarantee</p>
+        </div>
+      </div>
+    </section>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

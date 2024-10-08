@@ -20,28 +20,52 @@ module.exports.redirectUrl = (req, res, next) => {
 };
 
 // Verification for Cours ownership
-module.exports.isOwner = async (req, res, next) => {
-  const { id } = req.params;
-  const course = await Course.findById(id);
+module.exports.isCourseOwner = async (req, res, next) => {
+  const { courseId } = req.params;
+  const course = await Course.findById(courseId);
   if (
     res.locals.currentUser &&
     !course.author._id.equals(res.locals.currentUser._id)
   ) {
     req.flash("error", "You are not the ower of this course!");
-    return res.redirect(`/courses/${id}/show`);
+    return res.redirect(`/courses/${courseId}`);
   }
   next();
 };
 
 module.exports.isReviewOwner = async (req, res, next) => {
-  const { id, reviewId } = req.params;
+  const { courseId, reviewId } = req.params;
   const review = await Review.findById(reviewId);
   if (
     res.locals.currentUser &&
     !review.author._id.equals(res.locals.currentUser._id)
   ) {
     req.flash("error", "You are not the ower of this review!");
-    return res.redirect(`/courses/${id}/show`);
+    return res.redirect(`/courses/${courseId}`);
+  }
+  next();
+};
+
+// Middleware for confirming  wether the the student is not the author of course
+module.exports.isCourseAuthor = async (req, res, next) => {
+  const { courseId, reviewId } = req.params;
+  const course = await Course.findById(courseId);
+  if (!course) {
+    req.flash("error", "The course you are looking for does not exists!");
+    return res.redirect(`/courses`);
+  }
+
+  if (!res.locals.currentUser) {
+    req.flash("error", "You have to be logged-In first!");
+    res.redirect(`/login`);
+  }
+
+  if (
+    res.locals.currentUser &&
+    course.author._id.equals(res.locals.currentUser._id)
+  ) {
+    req.flash("error", "You cannot buy your own course!");
+    return res.redirect(`/courses/${courseId}`);
   }
   next();
 };

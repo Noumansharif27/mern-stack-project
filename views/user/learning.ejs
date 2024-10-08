@@ -1,0 +1,93 @@
+<%- layout("/layouts/boilerplate") %>
+<body>
+  <main class="learning-pg">
+    <section>
+      <article class="hero-dashboard">
+        <h1>My Learning</h1>
+        <div class="learning-nav-elements">
+          <a href="#"><strong>All courses</strong></a>
+          <a href="#"><strong>Mylists</strong> </a>
+          <a href="#"> <strong>Wishlist</strong> </a>
+          <a href="#"><strong>Achieved</strong> </a>
+          <a href="#"><strong>Learning tools</strong> </a>
+        </div>
+      </article>
+    </section>
+
+    <section class="courses-list-pg">
+      <div class="course-filter-section">
+        <div class="filter-section">
+          <div class="sorted-by">
+            <label for="sorted-by">Sorted by</label>
+            <select class="filter-dropdown" name="sorted-by" id="sorted-by">
+              <option value="rescerent-accessed">Rescent Accessed</option>
+            </select>
+          </div>
+          <div class="filter-by">
+            <div class="filter-by">
+              <label for="filter-by">Filter by</label>
+              <select class="filter-dropdown" name="categories" id="filter-by">
+                <option value="rescerent-accessed">Rescent Accessed</option>
+              </select>
+            </div>
+          </div>
+          <div class="progress">
+            <select class="filter-dropdown" name="progress" id="progress">
+              <option value="progress">Progress</option>
+            </select>
+          </div>
+          <div class="instructor">
+            <select class="filter-dropdown" name="instructor" id="instructor">
+              <option value="rescerent-accessed">Instructor</option>
+            </select>
+          </div>
+          <a href="#" class="reset-option"><strong>Reset</strong></a>
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            name="search-bar"
+            id="search-bar"
+            placeholder="Search my courses"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 -30 110 110"
+            aria-hidden="true"
+          >
+            <path
+              fill="#fff"
+              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
+              s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
+              c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
+              s-17-7.626-17-17S14.61,6,23.984,6z"
+            />
+          </svg>
+        </div>
+      </div>
+      <aside class="courses">
+        <% for(course of user.courses) { %>
+        <a href="#" class="card">
+          <div class="course-card">
+            <img src="<%= course.image %>" class="course-image" />
+            <h3 class="course-title"><%= course.title %></h3>
+            <p class="course-author">
+              <strong><%= course.author.username %></strong>
+            </p>
+            <div class="course-progress"></div>
+            <div class="course-rating">
+              <label for="rating">Leave your rating</label>
+              <p id="rating">
+                <span class="golden">&star;&star;&star;&star;&star;</span>
+              </p>
+            </div>
+          </div>
+        </a>
+        <% } %>
+      </aside>
+    </section>
+  </main>
+</body>
