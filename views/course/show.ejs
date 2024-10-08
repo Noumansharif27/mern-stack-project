@@ -44,7 +44,7 @@
             </button>
           </form>
           <% } %> <% if(!currentUser || !currentUser._id
-          .equals(course.author._id)) { %>
+          .equals(course.author._id) ) { %>
           <form action="/courses/<%= course._id%>/purchase" method="get">
             <button class="card-purchase-btn btn btn-2">Purchase course</button>
           </form>

@@ -8,7 +8,7 @@
         <p>Skill for you present (and for future). Get started with us.</p>
       </div>
     </div>
-    <% if(currentUser) { %>
+    <% if(currentUser && currentUser.courses.length) { %>
     <div class="courses-dash-board">
       <h1>Lets start Learning</h1>
       <a href="#" class="link"><strong>My learning</strong></a>
@@ -112,7 +112,9 @@
             <div class="card-title">
               <h4><%= course.title %></h4>
             </div>
-            <div class="card-author"><p><%= course.description %></p></div>
+            <div class="card-author">
+              <p><strong><%= course.description %></strong></p>
+            </div>
             <div class="card-reviews">
               <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
             </div>
@@ -134,7 +136,9 @@
             <div class="card-title">
               <h4><%= course.title %></h4>
             </div>
-            <div class="card-author"><p><%= course.description %></p></div>
+            <div class="card-author">
+              <p><strong><%= course.description %></strong></p>
+            </div>
             <div class="card-reviews">
               <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
             </div>
@@ -156,7 +160,9 @@
             <div class="card-title">
               <h4><%= course.title %></h4>
             </div>
-            <div class="card-author"><p><%= course.description %></p></div>
+            <div class="card-author">
+              <p><strong><%= course.description %></strong></p>
+            </div>
             <div class="card-reviews">
               <p><strong>4.2</strong>&starf;&starf;&starf;&starf;&star; 4.2</p>
             </div>

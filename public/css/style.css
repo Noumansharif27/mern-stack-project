@@ -1,7 +1,13 @@
+@font-face {
+  font-family: "DS";
+  src: url(../fonts/DS-Digital.ttf);
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 body {
@@ -69,6 +75,10 @@ img {
   font-size: 1rem;
 }
 
+.nav-element:hover {
+  color: blue;
+}
+
 .nav-bar .icons {
   width: 12rem;
   height: 80%;
@@ -82,6 +92,7 @@ img {
   object-fit: cover;
   object-position: center;
   height: 50%;
+  width: 2dvw;
 }
 
 .nav-icons {
@@ -124,6 +135,42 @@ img {
 .nav-bar .brand-logo {
   width: 5rem;
   /* background-color: aqua; */
+}
+
+.fa-teacher {
+  position: relative;
+}
+
+.fa-teacher:hover .about-tutor-nav {
+  display: block;
+}
+
+.fa-teacher .about-tutor-nav:hover {
+  display: block;
+}
+
+.fa-teacher .about-tutor-nav {
+  display: none;
+  position: absolute;
+  top: 280%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  min-height: 8rem;
+  width: 18rem;
+  padding: 1rem;
+  background-color: var(--universal-bg-light-color);
+  text-align: center;
+  transition: all 0.5s linear 0.1s;
+  color: var(--universal-bg-dark-color);
+}
+
+.fa-teacher .about-tutor-nav .btn {
+  border-color: var(--universal-bg-dark-color);
+  margin-top: 1rem;
+}
+
+.fa-teacher .about-tutor-nav .btn:hover {
+  color: var(--universal-bg-dark-color);
 }
 
 /* Footer */
@@ -221,6 +268,7 @@ img {
   width: 100%;
   background-color: #f8f9fb;
   position: relative;
+  pointer-events: none;
 }
 
 .hero-section img {
@@ -1575,12 +1623,12 @@ label.get-review-rating {
   gap: 1rem;
 }
 
-.card {
+.courses-list-pg .card {
   color: #000;
   text-decoration: none;
 }
 
-.card:hover {
+.courses-list-pg .card:hover {
   box-shadow: 10px 10px 10px -1px #0000001e;
 }
 
@@ -1593,6 +1641,11 @@ label.get-review-rating {
   height: 45%;
   width: 100%;
   margin-bottom: 0.5rem;
+}
+
+.course-card .course-title-author {
+  min-height: 4rem;
+  max-height: 4.2rem;
 }
 
 .courses-list-pg .courses .course-card .course-title {
@@ -1640,4 +1693,36 @@ label.get-review-rating {
   top: 50%;
   left: 60%;
   font-size: 0.75rem;
+}
+
+.empty-learning {
+  min-height: 60dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.empty-learning h3 {
+  font-size: 3rem;
+  opacity: 0.7;
+  font-family: DS;
+}
+
+.empty-learning img {
+  /* margin-left: 10rem; */
+  margin-bottom: 1rem;
+  border-radius: 50%;
+}
+
+.empty-learning .btn {
+  width: 8rem;
+  margin-top: 1rem;
+  border-color: var(--universal-bg-dark-color);
+}
+
+.empty-learning .btn:hover {
+  color: var(--universal-bg-dark-color);
 }

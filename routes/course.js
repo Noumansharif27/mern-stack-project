@@ -14,7 +14,6 @@ const wrapAsync = require("../utils/wrapAsync.js");
 // Index Rought
 router.get("/", async (req, res) => {
   let courses = await Course.find();
-  // console.log(courses);
   res.render("course/index.ejs", { courses });
 });
 

@@ -73,10 +73,12 @@
         <a href="#" class="card">
           <div class="course-card">
             <img src="<%= course.image %>" class="course-image" />
-            <h3 class="course-title"><%= course.title %></h3>
-            <p class="course-author">
-              <strong><%= course.author.username %></strong>
-            </p>
+            <div class="course-title-author">
+              <h3 class="course-title"><%= course.title %></h3>
+              <p class="course-author">
+                <strong><%= course.author.username %></strong>
+              </p>
+            </div>
             <div class="course-progress"></div>
             <div class="course-rating">
               <label for="rating">Leave your rating</label>
@@ -88,6 +90,18 @@
         </a>
         <% } %>
       </aside>
+
+      <div class="empty-learning">
+        <% if(!course.length > 0) { %>
+        <aside>
+          <img src="/assets/err-logo.gif" alt="empty-course-section" />
+          <h3>Looks like nothing is here</h3>
+          <form action="/courses" method="get">
+            <button class="btn btn-2">Courses</button>
+          </form>
+        </aside>
+        <% } %>
+      </div>
     </section>
   </main>
 </body>

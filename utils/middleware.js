@@ -70,6 +70,27 @@ module.exports.isCourseAuthor = async (req, res, next) => {
   next();
 };
 
+// User middleware to check if the user had aleady purchased the course
+// module.exports.isBuyedAlready = async (req, res, next) => {
+//   try {
+//     if (req.isAuthenticated()) {
+//       const { courseId } = req.params;
+//       const course = await Course.findById(courseId);
+
+//       const purchasedCourses = res.locals.currentUser.courses;
+//       if (purchasedCourses.includes(course._id)) {
+//         res.locals.isAlreadyPurchased = true;
+//       } else {
+//         res.locals.isAlreadyPurchased = true;
+//         next();
+//       }
+//       next();
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
 // Course Schema Validator
 module.exports.validateCourse = (req, res, next) => {
   let { error } = courseSchema.validate(req.body);
