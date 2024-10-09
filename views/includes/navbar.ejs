@@ -46,8 +46,41 @@
     <a href="#">
       <img src="/assets/reward.svg" class="nav-icons" />
     </a>
-    <a href="#">
+    <% if(currentUser) { %>
+    <a href="#" class="user-profile">
       <img src="/assets/user-profile.svg" class="nav-icons" />
     </a>
+    <% } %>
+
+    <!-- <div class="user-card">
+      <div class="user-details">
+        <img src="/assets/avatar-1.png" alt="profile-picture" />
+        <div class="additional-details">
+          <h3 class="username"><%= currentUser.username %></h3>
+          <p class="email"><%= currentUser.email %></p>
+        </div>
+      </div>
+      <hr />
+      <div class="account-details">
+        <a href="/users/<%= currentUser._id %>/">My learning</a>
+        <a href="/users/<%= currentUser._id %>/">My cart</a>
+        <a href="/users/<%= currentUser._id %>/">Whishlist</a>
+        <a href="/users/<%= currentUser._id %>/">Teach on FA</a>
+      </div>
+      <hr />
+      <div class="social-notifications">
+        <a class="notifications">Notifications</a>
+        <a class="messages">Messages</a>
+        <hr />
+      </div>
+
+      <div class="account-tools">
+        <a href="#">Account settings</a>
+        <a href="#">Payment methods</a>
+        <a href="#">Subscriptions</a>
+        <a href="#">FA creadits</a>
+        <a href="#">Purchase history</a>
+      </div>
+    </div> -->
   </div>
 </nav>

@@ -6,13 +6,14 @@ const ExpressError = require("./ExpressError.js");
 // Verification for User
 module.exports.isLogedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
+    req.session.redirectUrl = req.originalUrl;
     req.flash("error", "You mmust be loged in first!");
     res.redirect("/login");
   }
   next();
 };
 
-module.exports.redirectUrl = (req, res, next) => {
+module.exports.saveRedirectUrl = (req, res, next) => {
   if (req.session.redirectUrl) {
     res.locals.redirectUrl = req.session.redirectUrl;
   }

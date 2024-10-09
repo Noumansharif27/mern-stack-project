@@ -4,7 +4,7 @@ const User = require("../models/user.js");
 const passport = require("passport");
 const wrapAsync = require("../utils/wrapAsync.js");
 const Course = require("../models/course.js");
-const { isLogedIn } = require("../utils/middleware.js");
+const { isLogedIn, saveRedirectUrl } = require("../utils/middleware.js");
 
 // Sign In Rought
 router.get("/signin", (req, res) => {
@@ -42,13 +42,16 @@ router.get("/login", (req, res) => {
 // Login Post Rought
 router.post(
   "/login",
+  saveRedirectUrl,
   passport.authenticate("local", {
     failureRedirect: "/login",
     failureFlash: true,
   }),
   (req, res) => {
     req.flash("success", "Welcome back to Future Academy!");
-    res.redirect("/courses");
+
+    const redirectUrl = res.locals.redirectUrl || "/courses";
+    res.redirect(redirectUrl);
   }
 );
 

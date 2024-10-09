@@ -6,8 +6,8 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
   -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -85,7 +85,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: #333333; */
+  position: relative;
 }
 
 .nav-bar .icons img {
@@ -171,6 +171,111 @@ img {
 
 .fa-teacher .about-tutor-nav .btn:hover {
   color: var(--universal-bg-dark-color);
+}
+
+.user-profile {
+  position: relative;
+}
+
+.user-profile:hover .nav-icons:hover .user-card {
+  display: block;
+}
+
+/* .user-card::before {
+  content: "";
+  height: 6rem;
+  width: 5rem;
+  background-color: beige;
+  position: absolute;
+  top: -13%;
+  right: -10%;
+  z-index: 99999;
+} */
+
+.user-card::before:hover .user-card {
+  display: block;
+}
+
+.user-card {
+  /* display: none; */
+  position: absolute;
+  min-height: 85dvh;
+  min-width: 20dvw;
+  top: 640%;
+  right: -73%;
+  transform: translate(-50%, -50%);
+  background-color: var(--universal-bg-light-color);
+  padding: 0.5rem 0 1rem;
+}
+
+.user-card .user-details {
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  padding: 0.5rem 0.5rem;
+}
+
+.user-card .user-details img {
+  width: 30%;
+  height: 150%;
+  background-color: var(--universal-bg-dark-color);
+  border-radius: 50%;
+}
+
+.user-details .additional-details {
+  margin: 0.5rem 0 0 0.5rem;
+}
+
+.user-details .additional-details .username {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.user-details .additional-details .email {
+  font-size: 0.89rem;
+  opacity: 0.7;
+}
+
+.user-card .account-details {
+  height: 8rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.5rem 2rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.user-card div + hr {
+  margin-top: 2rem;
+  background-color: #d2d1d1;
+  height: 0.025rem;
+  width: 100%;
+}
+
+.user-card .social-notifications {
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  padding: 1rem 0;
+}
+
+.user-card .social-notifications a {
+  margin: 0 0.5rem;
+}
+
+.user-card .account-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 12rem;
+  padding: 2rem 0.5rem;
+}
+
+.user-card a:hover {
+  color: blue;
+  cursor: pointer;
 }
 
 /* Footer */
@@ -742,7 +847,7 @@ img {
   border: 1px solid var(--universal-bg-light-color);
   position: sticky;
   left: 95%;
-  top: 0%;
+  top: 15%;
   transform: translate(-50%, -50%);
   z-index: 99;
   display: flex;
@@ -752,7 +857,7 @@ img {
   border-radius: 0.5rem;
   background-color: var(--universal-bg-light-color);
   overflow: hidden;
-  margin-top: 10rem;
+  margin-top: 13rem;
   box-shadow: -10px -10px 20px -1px #24242470;
 }
 
