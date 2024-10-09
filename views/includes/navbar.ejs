@@ -50,9 +50,8 @@
     <a href="#" class="user-profile">
       <img src="/assets/user-profile.svg" class="nav-icons" />
     </a>
-    <% } %>
-
-    <!-- <div class="user-card">
+    <% } %> <% if(currentUser) { %>
+    <div class="user-card">
       <div class="user-details">
         <img src="/assets/avatar-1.png" alt="profile-picture" />
         <div class="additional-details">
@@ -81,6 +80,7 @@
         <a href="#">FA creadits</a>
         <a href="#">Purchase history</a>
       </div>
-    </div> -->
+    </div>
+    <% } %>
   </div>
 </nav>

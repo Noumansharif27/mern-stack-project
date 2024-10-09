@@ -177,9 +177,9 @@ img {
   position: relative;
 }
 
-.user-profile:hover .nav-icons:hover .user-card {
+/* .user-profile:hover .nav-icons:hover .user-card {
   display: block;
-}
+} */
 
 /* .user-card::before {
   content: "";
@@ -192,12 +192,12 @@ img {
   z-index: 99999;
 } */
 
-.user-card::before:hover .user-card {
+/* .user-card::before:hover .user-card {
   display: block;
-}
+} */
 
 .user-card {
-  /* display: none; */
+  display: none;
   position: absolute;
   min-height: 85dvh;
   min-width: 20dvw;

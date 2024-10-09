@@ -20,7 +20,7 @@ module.exports.saveRedirectUrl = (req, res, next) => {
   next();
 };
 
-// Verification for Cours ownership
+// Verification for Course ownership
 module.exports.isCourseOwner = async (req, res, next) => {
   const { courseId } = req.params;
   const course = await Course.findById(courseId);
