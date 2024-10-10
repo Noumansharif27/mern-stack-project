@@ -33,6 +33,12 @@ const courseSchema = new Schema({
       ref: "Review",
     },
   ],
+  students: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 courseSchema.post("findOneAndDelete", async (course) => {

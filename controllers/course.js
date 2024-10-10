@@ -33,7 +33,7 @@ module.exports.postNewRought = async (req, res) => {
 };
 
 // Show Rought
-module.exports.showRought = async (req, res) => {
+module.exports.showRought = wrapAsync(async (req, res) => {
   const { courseId } = req.params;
 
   let course = await Course.findById(courseId)
@@ -45,12 +45,27 @@ module.exports.showRought = async (req, res) => {
     })
     .populate("author");
 
+  console.log(course.students);
+  const currentUser = res.locals.currentUser;
+
+  if (currentUser) {
+    course.students.forEach((el) => {
+      if (el.equals(currentUser._id)) {
+        return true;
+      }
+    });
+  }
+  // if (currentUser) {
+  //   course.students.forEach((el) => {
+  //     console.log(el);
+  // }
+
   if (!course) {
     req.flash("error", "Course you are looking for does not exists.");
     res.redirect("/courses");
   }
   res.render("course/show.ejs", { course });
-};
+});
 
 // Edit Rought
 module.exports.getEditRought = async (req, res) => {
@@ -92,11 +107,20 @@ module.exports.postPurchaseRought = wrapAsync(async (req, res) => {
   const course = await Course.findById(courseId);
   const user = await User.findById(res.locals.currentUser._id);
   user.courses.push(course._id);
+
+  course.students.push(res.locals.currentUser._id);
   await user.save();
+  await course.save();
 
   req.flash("success", "You have successfully completed your purchase.");
   res.redirect("/courses");
 });
+
+module.exports.courseLeactureShowRought = async (req, res) => {
+  const { courseId } = req.params;
+  console.log(courseId);
+  res.render("course/leacture.ejs");
+};
 
 // Destroy Rought
 module.exports.destroyRought = async (req, res) => {

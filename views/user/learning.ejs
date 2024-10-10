@@ -70,7 +70,7 @@
       </div>
       <aside class="courses">
         <% for(course of user.courses) { %>
-        <a href="#" class="card">
+        <a href="/courses/<%= course._id %>/leacture" class="card">
           <div class="course-card">
             <img src="<%= course.image %>" class="course-image" />
             <div class="course-title-author">

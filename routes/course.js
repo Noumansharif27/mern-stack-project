@@ -39,4 +39,10 @@ router.get(
   courseControlles.getPurchaseRought
 );
 
+router.get(
+  "/:courseId/leacture",
+  isLogedIn,
+  courseControlles.courseLeactureShowRought
+);
+
 module.exports = router;

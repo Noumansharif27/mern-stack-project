@@ -13,6 +13,7 @@ const courseRought = require("./routes/course.js");
 const userRought = require("./routes/user.js");
 const tutorRought = require("./routes/tutor.js");
 const reviewRought = require("./routes/review.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 const app = express();
 const port = 8080;
@@ -22,8 +23,8 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: true,
   cookie: {
-    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    maxAge: +7 * 24 * 60 * 60 * 1000,
+    expires: Date.now() + 365 * 24 * 60 * 60 * 1000,
+    maxAge: +365 * 24 * 60 * 60 * 1000,
     httpOnly: true,
   },
 };
@@ -76,8 +77,8 @@ app.use("/", userRought);
 app.use("/", tutorRought);
 app.use("/courses/:courseId/reviews", reviewRought);
 
-app.all("*", (req, res) => {
-  res.render("error.ejs");
+app.all("*", (req, res, next) => {
+  next(new ExpressError(404, "Page not found"));
 });
 
 // Error handler
