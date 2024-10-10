@@ -66,16 +66,20 @@ module.exports.postEditRought = wrapAsync(async (req, res, next) => {
   }
 
   const { courseId } = req.params;
-  let course = await Course.findByIdAndUpdate(courseId, {
+  await Course.findByIdAndUpdate(courseId, {
     ...req.body.course,
   });
   req.flash("success", "Course content edit successfully!");
   res.redirect(`/courses/${courseId}`);
 });
 
-// User Course Rought
+// Get Purchase Rought
 module.exports.getPurchaseRought = async (req, res) => {
   const { courseId } = req.params;
+  // if (!res.locals.currentUser) {
+  //   req.flash("error", "You have to be Logged-In first!");
+  //   return res.redirect("/login");
+  // }
   const course = await Course.findById(courseId);
 
   res.render("user/courseCheckout.ejs", { course });
@@ -88,7 +92,7 @@ module.exports.postPurchaseRought = wrapAsync(async (req, res) => {
   const course = await Course.findById(courseId);
   const user = await User.findById(res.locals.currentUser._id);
   user.courses.push(course._id);
-  const result = await user.save();
+  await user.save();
 
   req.flash("success", "You have successfully completed your purchase.");
   res.redirect("/courses");
@@ -97,7 +101,7 @@ module.exports.postPurchaseRought = wrapAsync(async (req, res) => {
 // Destroy Rought
 module.exports.destroyRought = async (req, res) => {
   const { courseId } = req.params;
-  const result = await Course.findByIdAndDelete(courseId);
+  await Course.findByIdAndDelete(courseId);
 
   req.flash("success", "Course deleted successfully!");
   res.redirect("/courses");

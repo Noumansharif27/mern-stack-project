@@ -50,6 +50,10 @@
     <a href="#" class="user-profile">
       <img src="/assets/user-profile.svg" class="nav-icons" />
     </a>
+    <% } %> <% if(!currentUser) { %>
+    <a href="/signin" class="user-profile">
+      <img src="/assets/signin.svg" class="nav-icons" />
+    </a>
     <% } %> <% if(currentUser) { %>
     <div class="user-card">
       <div class="user-details">

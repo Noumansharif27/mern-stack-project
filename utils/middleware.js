@@ -7,8 +7,8 @@ const ExpressError = require("./ExpressError.js");
 module.exports.isLogedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
     req.session.redirectUrl = req.originalUrl;
-    req.flash("error", "You mmust be loged in first!");
-    res.redirect("/login");
+    req.flash("error", "You have to be Logge-In first!");
+    return res.redirect("/login");
   }
   next();
 };
@@ -58,7 +58,7 @@ module.exports.isCourseAuthor = async (req, res, next) => {
 
   if (!res.locals.currentUser) {
     req.flash("error", "You have to be logged-In first!");
-    res.redirect(`/login`);
+    return res.redirect(`/login`);
   }
 
   if (

@@ -679,6 +679,17 @@ img {
 
 /* Sing-In form */
 
+.signin-container {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+}
+
+.signin-container .signin-form {
+  margin-top: 5rem;
+  margin-left: 3rem;
+}
+
 .signin-form {
   height: 70dvh;
   width: 25dvw;
@@ -910,6 +921,26 @@ img {
 .btn-2:hover {
   color: #fff;
   opacity: 0.8;
+}
+
+.purchase-btn {
+  min-width: 80%;
+}
+
+.show-course-card .favourite-btn {
+  content: "/e013";
+  width: 30%;
+  background-color: transparent;
+  color: #fff;
+  height: 2rem;
+  padding: 0;
+  border: none;
+}
+
+.favourite-btn svg {
+  height: 100%;
+  border-top: none;
+  background-color: #b14a30;
 }
 
 .show-course-card .guarante-label {

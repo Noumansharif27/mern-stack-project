@@ -26,7 +26,7 @@ router
   );
 
 // Logout Rought
-router.get("/logout", userConterllers.logoutRought);
+router.get("/logout", saveRedirectUrl, userConterllers.logoutRought);
 
 // Users Rought
 router.get("/users/:userId", isLogedIn, userConterllers.userCoursesRought);

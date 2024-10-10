@@ -1,42 +1,47 @@
 <%- layout("/layouts/boilerplate") %>
 
 <body>
-  <form action="/signin" method="post" class="signin-form">
-    <h1>Sign In</h1>
-    <div class="signin-username">
-      <label for="username">Username</label>
-      <input
-        type="text"
-        name="user[username]"
-        id="username"
-        placeholder="username"
-        required
-      />
+  <main class="signin-container">
+    <div class="bg-img">
+      <img src="/assets/signin-illustration.webp" alt="signin-illustration" />
     </div>
+    <form action="/signin" method="post" class="signin-form">
+      <h1>Sign In</h1>
+      <div class="signin-username">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="user[username]"
+          id="username"
+          placeholder="username"
+          required
+        />
+      </div>
 
-    <div class="signin-email">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        name="user[email]"
-        placeholder="examle@mail.com"
-        id="email"
-        required
-      />
-    </div>
+      <div class="signin-email">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="user[email]"
+          placeholder="examle@mail.com"
+          id="email"
+          required
+        />
+      </div>
 
-    <div class="signin-password">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        name="user[password]"
-        placeholder="******"
-        id="password"
-        required
-      />
-    </div>
+      <div class="signin-password">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="user[password]"
+          placeholder="******"
+          id="password"
+          required
+        />
+      </div>
 
-    <input type="text" name="tutor" id="user[role]" style="display: none" />
-    <button class="btn">Sign In</button>
-  </form>
+      <input type="text" name="tutor" id="user[role]" style="display: none" />
+      <button class="btn">Sign In</button>
+    </form>
+  </main>
 </body>
