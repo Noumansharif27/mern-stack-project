@@ -43,15 +43,19 @@ module.exports.showRought = wrapAsync(async (req, res) => {
         path: "author",
       },
     })
-    .populate("author");
+    .populate("author")
+    .populate("students");
 
-  console.log(course.students);
   const currentUser = res.locals.currentUser;
+  console.log(course.students);
+  console.log(currentUser);
 
+  let hasPurchased = false;
   if (currentUser) {
-    course.students.forEach((el) => {
-      if (el.equals(currentUser._id)) {
-        return true;
+    course.students.forEach((studentId) => {
+      if (studentId.equals(currentUser._id)) {
+        hasPurchased = true; // Set the flag to true if a match is found
+        return "hi"; // Exit the loop early to avoid unnecessary iterations
       }
     });
   }
