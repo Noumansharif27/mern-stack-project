@@ -784,11 +784,28 @@ img {
   height: 1.75rem;
   min-width: 3rem;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .alert-close-btn img {
   height: 100%;
   transform: scale(1.3);
+  cursor: pointer;
+}
+
+.err-btn {
+  width: 8rem;
+  height: 2.5rem;
+  background-color: transparent;
+  border: 1px solid var(--universal-bg-dark-color);
+  color: var(--universal-bg-dark-color);
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.err-btn:hover {
+  background-color: var(--universal-bg-dark-color);
+  color: #fff;
 }
 
 /* Show course */
@@ -1030,7 +1047,7 @@ img {
   opacity: 1;
 }
 
-.course-content-details {
+.show-course-pg .course-content-details {
   margin: 4rem 0 2rem 5rem;
   height: 13rem;
   width: 40%;
@@ -1038,12 +1055,12 @@ img {
   padding: 2rem;
 }
 
-.course-content-details h2 {
+.show-course-pg .course-content-details h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
 }
 
-.course-content-details .content {
+.show-course-pg .course-content-details .content {
   display: flex;
   flex: 1;
   justify-content: space-around;
@@ -1905,6 +1922,7 @@ label.get-review-rating {
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  z-index: 999;
 }
 
 .leacture-pg-left-nav,
@@ -1919,6 +1937,7 @@ label.get-review-rating {
 
 .leacture-pg-left-nav {
   justify-content: flex-start;
+  min-width: 50%;
 }
 
 .leacture-pg-right-nav {
@@ -1926,12 +1945,11 @@ label.get-review-rating {
 }
 
 .leacture-pg-left-nav .brand-logo {
-  width: 20%;
+  width: 13%;
 }
 
 .leacture-pg-left-nav img {
-  height: 100%;
-  width: 100%;
+  height: 80%;
 }
 
 .leacture-pg-left-nav .pipe-line {
@@ -1946,11 +1964,26 @@ label.get-review-rating {
   font-size: 1rem;
 }
 
-.leacture-pg-nav .btn:nth-child(3) {
+.leacture-pg-nav .more-option {
   width: 2rem;
   background-color: #fff;
   border-radius: 0.2rem;
+  position: relative;
 }
+
+/* .leacture-pg-nav .more-option ul {
+  position: absolute;
+  top: 125%;
+  width: 500%;
+  right: -120%;
+  min-height: 5rem;
+  z-index: 9999;
+  color: #000;
+  list-style: none;
+  background-color: #ccc;
+  padding: 1rem;
+  font-size: 1rem;
+} */
 
 .leacture-pg-nav .btn:hover {
   color: var(--universal-bg-dark-color);
@@ -1974,26 +2007,27 @@ label.get-review-rating {
 } */
 
 .main-leacture-content {
-  min-height: 800dvh;
-  width: 66%;
+  min-height: 100dvh;
+  width: 70%;
   border: 1px soid var(--universal-bg-dark-color);
-  background-color: pink;
   flex-grow: 1;
-  padding: 0 0 1rem 0;
+  padding: 3.5rem 0 1rem 0;
   /* display: flex; */
+  transition: width 0.5s linear 0.1s;
 }
 
 .leactures-info-bar {
   height: 100%;
   position: fixed;
-  right: -18%;
+  right: -15%;
   top: 59%;
   display: flex;
   flex-direction: column;
   transform: translate(-50%, -50%);
-  width: 35%;
+  width: 30%;
   background-color: #fff;
   border-left: 1px solid #cccccc;
+  transition: width 0.5s linear 0.1s;
 }
 
 .leactures-info-bar .title-bar {
@@ -2025,15 +2059,27 @@ label.get-review-rating {
   height: 70dvh;
   width: 100%;
   border-bottom: 1px solid #5e5d5d46;
+  position: relative;
 }
 
-.leacture-pg .main-leacture-content .play-screen img {
+.leacture-pg .main-leacture-content .play-screen > img {
   height: 100%;
   width: 100%;
 }
 
+.side-bar-maximiza-icon {
+  position: absolute;
+  left: 20%;
+  top: 0;
+  width: 20%;
+  height: 50%;
+  scale: 0.09;
+  /* z-index: 555; */
+  border-radius: 100%;
+}
+
 .leacture-pg .main-leacture-content .video-settings {
-  height: 3rem;
+  height: 2.8rem;
   border-bottom: 1px solid #5e5d5d46;
   display: flex;
   justify-content: flex-end;
@@ -2044,11 +2090,15 @@ label.get-review-rating {
 
 .leacture-pg .main-leacture-content .video-settings img {
   height: 60%;
-  opacity: 0.8;
+  cursor: pointer;
+}
+
+.main-leacture-content .video-settings img:hover {
+  opacity: 0.7;
 }
 
 .main-leacture-content .social-bar {
-  height: 4rem;
+  height: 2.5rem;
   width: 95%;
   margin: auto;
   border-bottom: 1px solid #5e5d5d46;
@@ -2075,13 +2125,14 @@ label.get-review-rating {
   height: 0.2rem;
   width: 100%;
   position: absolute;
-  top: 210%;
+  top: 150%;
   left: 0;
   background-color: #000;
 }
 
 .main-leacture-content .social-bar img {
-  height: 50%;
+  height: 70%;
+  cursor: pointer;
 }
 
 .main-leacture-content .course-description {
@@ -2092,12 +2143,13 @@ label.get-review-rating {
 
 .main-leacture-content .addictional-course-info {
   display: flex;
-  gap: 2rem;
+  gap: 2em;
   padding: 0 1.5rem;
 }
 
 .main-leacture-content .addictional-course-info p {
   position: relative;
+  margin-bottom: 2rem;
 }
 
 .main-leacture-content .addictional-course-info p span {
@@ -2135,4 +2187,110 @@ label.get-review-rating {
   transform: translate(-50%, -50%);
   opacity: 0.5;
   scale: 0.85;
+}
+
+.published-date {
+  height: 2rem;
+  width: 100%;
+  padding-left: 1.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.published-date img {
+  height: 60%;
+}
+
+.published-date p {
+  font-size: 0.8rem;
+}
+
+.schedule-learning {
+  width: 95%;
+  min-height: 11rem;
+  border: 1px solid var(--universal-bg-dark-color);
+  padding: 1rem;
+  display: flex;
+  gap: 4rem;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.schedule-learning .message {
+  width: 90%;
+}
+
+.schedule-learning img {
+  height: 30%;
+}
+
+.schedule-learning p {
+  margin-top: 1rem;
+}
+
+.schedule-learning .schedule-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  height: 3rem;
+  background-color: var(--universal-bg-dark-color);
+  border-color: var(--universal-bg-dark-color);
+}
+
+.schedule-learning .btn2 {
+  background-color: transparent;
+  color: var(--universal-bg-dark-color);
+}
+
+.schedule-learning .btn1:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+.schedule-learning .btn2:hover {
+  background-color: var(--universal-bg-dark-color);
+  color: #fff;
+}
+
+.leacture-pg .course-content-details {
+  height: 10rem;
+  width: 93%;
+  padding-top: 1.5rem;
+  border-bottom: 1px solid var(--universal-bg-dark-color);
+  margin: auto;
+  display: flex;
+  gap: 4rem;
+}
+
+.leacture-pg .course-content-details .skill-detail,
+.content-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.leacture-pg .certification {
+  height: 8rem;
+  width: 93%;
+  padding-top: 1.5rem;
+  border-bottom: 1px solid var(--universal-bg-dark-color);
+  margin: auto;
+  display: flex;
+  gap: 4rem;
+}
+
+.leacture-pg .certification .certification-download-btn {
+  width: 80%;
+  height: 3rem;
+  background-color: transparent;
+  color: var(--universal-bg-dark-color);
+  border-color: var(--universal-bg-dark-color);
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.leacture-pg .certification .certification-download-btn:hover {
+  background-color: var(--universal-bg-dark-color);
+  color: #fff;
 }

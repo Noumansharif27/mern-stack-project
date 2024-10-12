@@ -5,6 +5,7 @@ const {
   isLogedIn,
   isCourseOwner,
   isCourseAuthor,
+  isStudent,
 } = require("../utils/middleware.js");
 const courseControlles = require("../controllers/course.js");
 
@@ -42,6 +43,7 @@ router.get(
 router.get(
   "/:courseId/leacture",
   isLogedIn,
+  isStudent,
   courseControlles.courseLeactureShowRought
 );
 

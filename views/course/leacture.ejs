@@ -10,10 +10,12 @@
     <nav class="leacture-pg-nav">
       <div class="leacture-pg-left-nav">
         <div class="brand-logo">
-          <img src="/assets/l-favicon.svg" alt="" />
+          <a href="/courses">
+            <img src="/assets/l-favicon.svg" alt="" />
+          </a>
         </div>
         <p class="pipe-line">|</p>
-        <p class="course-title">Lorem, ipsum dolor.</p>
+        <p class="course-title"><%= course.title %></p>
       </div>
       <div class="leacture-pg-right-nav">
         <div class="progress">
@@ -23,25 +25,34 @@
           </select>
         </div>
         <button class="btn btn2">Share</button>
-        <button class="btn btn2">
+        <button class="btn btn2 more-option">
           <img src="/assets/more-option.svg" alt="" />
+          <!-- <ul>
+            <li>side-bar</li>
+          </ul> -->
         </button>
       </div>
     </nav>
     <main>
       <section class="main-leacture-content">
         <div class="play-screen">
-          <img src="/assets/full-stack-web-development.jpg" alt="" />
+          <img src="<%= course.image %>" alt="" />
+          <img
+            src="/assets/maximizing-side-bar-icon.svg"
+            class="side-bar-maximiza-icon"
+          />
         </div>
         <div class="video-settings">
           <img src="/assets/gear-icon.svg" alt="maximiza-screen-icon" />
           <img
             src="/assets/minimize-screen-icon.svg"
             alt="minimize-screen-icon"
+            class="minimize-screen-icon"
           />
           <img
             src="/assets/maximiza-screen-icon.svg"
-            alt="maximiza-screen-icon"
+            alt="maximize-screen-icon"
+            class="maximize-screen-icon"
           />
         </div>
         <div class="social-bar">
@@ -53,9 +64,7 @@
           <a href="#"><strong>Reviews</strong></a>
           <a href="#"><strong>Learning tools</strong></a>
         </div>
-        <p class="course-description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </p>
+        <p class="course-description"><%= course.description %></p>
         <div class="addictional-course-info">
           <p>
             <strong>3.8 <span>&starf;</span></strong>
@@ -66,6 +75,58 @@
           <p>
             <strong>1 hour</strong>
           </p>
+        </div>
+        <div class="published-date">
+          <img
+            src="/assets/course-publish-icon.svg"
+            alt="course-publish-icon"
+          />
+          <p><%= course.publishDate %></p>
+        </div>
+
+        <div class="schedule-learning closing-banner">
+          <div class="clck">
+            <img src="/assets/clock.svg" alt="" />
+          </div>
+          <div class="message">
+            <h3>Schedule learning time</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+              perferendis et ducimus molestias soluta veniam repellat quos,
+              officiis, fuga, illo quibusdam enim voluptatum voluptate. Non
+              distinctio accusamus ipsa eum minus.
+            </p>
+            <button class="btn btn1 schedule-btn">
+              <strong>Get started</strong>
+            </button>
+            <button class="btn btn2 schedule-btn closing-banner-btn">
+              <strong>Dismiss</strong>
+            </button>
+          </div>
+        </div>
+
+        <div class="course-content-details">
+          <p><strong>By the number</strong></p>
+          <div class="skill-detail">
+            <p>Skill level: Beginner Level</p>
+            <p>Students: 12,015</p>
+            <p>Languages: English</p>
+            <p>Caption: Yes</p>
+          </div>
+          <div class="content-detail">
+            <p>Leactures</p>
+            <p>Video: 1 total hour</p>
+          </div>
+        </div>
+
+        <div class="certification">
+          <p><strong>Certification</strong></p>
+          <div class="download-option">
+            <p>Get Future Academy certification by completing entire course</p>
+            <button class="btn certification-download-btn">
+              <strong>FA certifiacte</strong>
+            </button>
+          </div>
         </div>
       </section>
       <article class="leactures-info-bar">

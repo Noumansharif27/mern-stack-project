@@ -7,10 +7,8 @@ module.exports.signin = (req, res) => {
 
 module.exports.postSigninRought = async (req, res, next) => {
   try {
-    // let newUser = req.body.user;
     let { username, email, password } = req.body.user;
     let user = new User({ username, email });
-
     let registeredUser = await User.register(user, password);
 
     req.login(registeredUser, (err) => {

@@ -9,12 +9,12 @@ module.exports.IndexRought = async (req, res) => {
   res.render("course/index.ejs", { courses });
 };
 
-// New Rought
+// Get New Rought
 module.exports.getNewRought = (req, res) => {
   res.render("course/new.ejs");
 };
 
-// New Post Rought
+// Post New Rought
 module.exports.postNewRought = async (req, res) => {
   const course = req.body.course;
 
@@ -43,26 +43,15 @@ module.exports.showRought = wrapAsync(async (req, res) => {
         path: "author",
       },
     })
-    .populate("author")
-    .populate("students");
+    .populate("author");
 
   const currentUser = res.locals.currentUser;
-  console.log(course.students);
-  console.log(currentUser);
-
-  let hasPurchased = false;
   if (currentUser) {
-    course.students.forEach((studentId) => {
-      if (studentId.equals(currentUser._id)) {
-        hasPurchased = true; // Set the flag to true if a match is found
-        return "hi"; // Exit the loop early to avoid unnecessary iterations
-      }
-    });
+    // console.log(course.students);
+    if (course.students.includes(currentUser._id)) {
+      console.log("The user had already purchased the corse.");
+    }
   }
-  // if (currentUser) {
-  //   course.students.forEach((el) => {
-  //     console.log(el);
-  // }
 
   if (!course) {
     req.flash("error", "Course you are looking for does not exists.");
@@ -71,7 +60,7 @@ module.exports.showRought = wrapAsync(async (req, res) => {
   res.render("course/show.ejs", { course });
 });
 
-// Edit Rought
+// Get Edit Rought
 module.exports.getEditRought = async (req, res) => {
   const { courseId } = req.params;
   let course = await Course.findById(courseId);
@@ -120,17 +109,18 @@ module.exports.postPurchaseRought = wrapAsync(async (req, res) => {
   res.redirect("/courses");
 });
 
-module.exports.courseLeactureShowRought = async (req, res) => {
+module.exports.courseLeactureShowRought = wrapAsync(async (req, res) => {
   const { courseId } = req.params;
-  console.log(courseId);
-  res.render("course/leacture.ejs");
-};
+  const course = await Course.findById(courseId);
+
+  res.render("course/leacture.ejs", { course });
+});
 
 // Destroy Rought
-module.exports.destroyRought = async (req, res) => {
+module.exports.destroyRought = wrapAsync(async (req, res) => {
   const { courseId } = req.params;
   await Course.findByIdAndDelete(courseId);
 
   req.flash("success", "Course deleted successfully!");
   res.redirect("/courses");
-};
+});

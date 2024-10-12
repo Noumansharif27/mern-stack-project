@@ -2,6 +2,7 @@ const { courseSchema, reviewSchema } = require("../schemaValidation.js");
 const Course = require("../models/course.js");
 const Review = require("../models/review.js");
 const ExpressError = require("./ExpressError.js");
+const wrapAsync = require("./wrapAsync.js");
 
 // Verification for User
 module.exports.isLogedIn = (req, res, next) => {
@@ -13,6 +14,17 @@ module.exports.isLogedIn = (req, res, next) => {
   next();
 };
 
+// Chect if all the fields are filled
+module.exports.isUserAvaliable = wrapAsync(async (req, res, next) => {
+  const user = req.body.user;
+  if (!user) {
+    req.flash("error", "Something is missing!");
+    res.redirect("/signin");
+  }
+  next();
+});
+
+// Save the current URL before logIn
 module.exports.saveRedirectUrl = (req, res, next) => {
   if (req.session.redirectUrl) {
     res.locals.redirectUrl = req.session.redirectUrl;
@@ -34,6 +46,7 @@ module.exports.isCourseOwner = async (req, res, next) => {
   next();
 };
 
+// Verify if the user is review owner
 module.exports.isReviewOwner = async (req, res, next) => {
   const { courseId, reviewId } = req.params;
   const review = await Review.findById(reviewId);
@@ -91,6 +104,24 @@ module.exports.isCourseAuthor = async (req, res, next) => {
 //     console.log(err);
 //   }
 // };
+
+// Check wether the user had enrolled in course
+module.exports.isStudent = wrapAsync(async (req, res, next) => {
+  const { courseId } = req.params;
+  const user = res.locals.currentUser;
+  const course = await Course.findById(courseId);
+
+  if (!user.courses.includes(course._id)) {
+    req.flash(
+      "error",
+      "Unauthorized move, you are not the student of this course!"
+    );
+    res.locals.isAlreadyPurchased = false;
+    return res.redirect(`/courses/${courseId}`);
+  }
+  res.locals.isAlreadyPurchased = true;
+  next();
+});
 
 // Course Schema Validator
 module.exports.validateCourse = (req, res, next) => {

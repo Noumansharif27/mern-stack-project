@@ -48,7 +48,9 @@
     </a>
     <% if(currentUser) { %>
     <a href="#" class="user-profile">
-      <img src="/assets/user-profile.svg" class="nav-icons" />
+      <abbr title="hello <%= currentUser.username %>">
+        <img src="/assets/user-profile.svg" class="nav-icons" />
+      </abbr>
     </a>
     <% } %> <% if(!currentUser) { %>
     <a href="/signin" class="user-profile">
