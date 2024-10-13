@@ -15,7 +15,7 @@ module.exports.postSigninRought = wrapAsync(async (req, res, next) => {
       return next(err);
     }
 
-    req.flash("success", "Welcome on Future Academy!");
+    req.flash("success", "Welcome at Future Academy!");
     res.redirect("/courses");
   });
 });
