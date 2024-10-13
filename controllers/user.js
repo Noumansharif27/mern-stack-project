@@ -5,25 +5,20 @@ module.exports.signin = (req, res) => {
   res.render("user/signin.ejs");
 };
 
-module.exports.postSigninRought = async (req, res, next) => {
-  try {
-    let { username, email, password } = req.body.user;
-    let user = new User({ username, email });
-    let registeredUser = await User.register(user, password);
+module.exports.postSigninRought = wrapAsync(async (req, res, next) => {
+  let { username, email, password } = req.body.user;
+  let user = new User({ username, email });
+  let registeredUser = await User.register(user, password);
 
-    req.login(registeredUser, (err) => {
-      if (err) {
-        next(err);
-      }
+  req.login(registeredUser, (err) => {
+    if (err) {
+      return next(err);
+    }
 
-      req.flash("success", "Welcome on Future Academy!");
-      res.redirect("/courses");
-    });
-  } catch (err) {
-    req.flash("error", err.message);
-    res.redirect("/signin");
-  }
-};
+    req.flash("success", "Welcome on Future Academy!");
+    res.redirect("/courses");
+  });
+});
 
 module.exports.getLoginRought = (req, res) => {
   res.render("user/login.ejs");
