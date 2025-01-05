@@ -11,7 +11,9 @@
     <% if(currentUser && currentUser.courses.length) { %>
     <div class="courses-dash-board">
       <h1>Lets start Learning</h1>
-      <a href="#" class="link"><strong>My learning</strong></a>
+      <a href="users/<%= currentUser._id %>" class="link"
+        ><strong>My learning</strong></a
+      >
       <div class="my-courses-cards">
         <div class="card">
           <div class="card-image">
