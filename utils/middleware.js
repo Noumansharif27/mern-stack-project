@@ -154,3 +154,29 @@ module.exports.validateReview = (req, res, next) => {
     next();
   }
 };
+
+// Confirm whether the user is eligable for review.
+// module.exports.isEligableForReview = async (req, res, next) => {
+//   const { courseId, reviewId } = req.params;
+//   const course = await Course.findById(courseId);
+//   if (!course) {
+//     req.flash("error", "The course you are looking for does not exists!");
+//     return res.redirect(`/courses`);
+//   }
+
+//   if (!res.locals.currentUser) {
+//     req.flash("error", "You have to be logged-In first!");
+//     return res.redirect(`/login`);
+//   }
+
+//   // for (let buyedCourses = res.locals.currentUser; ) { };
+
+//   if (
+//     res.locals.currentUser &&
+//     course.author._id.equals(res.locals.currentUser._id)
+//   ) {
+//     req.flash("error", "You cannot buy your own course!");
+//     return res.redirect(`/courses/${courseId}`);
+//   }
+//   next();
+// };
