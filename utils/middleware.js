@@ -109,6 +109,7 @@ module.exports.isCourseAuthor = async (req, res, next) => {
 module.exports.isStudent = wrapAsync(async (req, res, next) => {
   const { courseId } = req.params;
   const user = res.locals.currentUser;
+  const purchaseStatus = res.locals.isAlreadyPurchased;
   const course = await Course.findById(courseId);
 
   if (!user.courses.includes(course._id)) {
@@ -116,10 +117,10 @@ module.exports.isStudent = wrapAsync(async (req, res, next) => {
       "error",
       "Unauthorized move, you are not the student of this course!"
     );
-    res.locals.isAlreadyPurchased = false;
+    purchaseStatus = false;
     return res.redirect(`/courses/${courseId}`);
   }
-  res.locals.isAlreadyPurchased = true;
+  purchaseStatus = true;
   next();
 });
 
@@ -156,27 +157,30 @@ module.exports.validateReview = (req, res, next) => {
 };
 
 // Confirm whether the user is eligable for review.
-// module.exports.isEligableForReview = async (req, res, next) => {
-//   const { courseId, reviewId } = req.params;
-//   const course = await Course.findById(courseId);
-//   if (!course) {
-//     req.flash("error", "The course you are looking for does not exists!");
-//     return res.redirect(`/courses`);
-//   }
+module.exports.isEligableForReview = async (req, res, next) => {
+  const { courseId } = req.params;
+  const course = await Course.findById(courseId);
+  const user = res.locals.currentUser;
+  const courseReviews = course.reviews;
 
-//   if (!res.locals.currentUser) {
-//     req.flash("error", "You have to be logged-In first!");
-//     return res.redirect(`/login`);
-//   }
+  // If relative course does not exists.
+  if (!course) {
+    req.flash("error", "The course you are looking for does not exists!");
+    return res.redirect(`/courses`);
+  }
 
-//   // for (let buyedCourses = res.locals.currentUser; ) { };
+  // Confirm the loged-In status.
+  if (!user) {
+    req.flash("error", "You have to be logged-In first!");
+    return res.redirect(`/login`);
+  }
 
-//   if (
-//     res.locals.currentUser &&
-//     course.author._id.equals(res.locals.currentUser._id)
-//   ) {
-//     req.flash("error", "You cannot buy your own course!");
-//     return res.redirect(`/courses/${courseId}`);
-//   }
-//   next();
-// };
+  // restricting student to only one review.
+
+  // Restricting the owner for reviewing.
+  if (user && course.author._id.equals(user._id)) {
+    req.flash("error", "You cannot review your own course!");
+    return res.redirect(`/courses/${courseId}`);
+  }
+  next();
+};

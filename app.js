@@ -86,6 +86,7 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
   let { statusCode = 400, message = "Something went wrong" } = err;
   res.status(statusCode).render("error.ejs", { err });
+  console.log(` error - ${err}`);
 });
 
 app.listen(port, () => {

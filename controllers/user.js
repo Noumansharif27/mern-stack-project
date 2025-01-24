@@ -1,10 +1,12 @@
 const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 
+// Get Sign-in route
 module.exports.signin = (req, res) => {
   res.render("user/signin.ejs");
 };
 
+// Post Sign-in route
 module.exports.postSigninRought = wrapAsync(async (req, res, next) => {
   let { username, email, password } = req.body.user;
   let user = new User({ username, email });
@@ -20,10 +22,12 @@ module.exports.postSigninRought = wrapAsync(async (req, res, next) => {
   });
 });
 
+// Get log-in route
 module.exports.getLoginRought = (req, res) => {
   res.render("user/login.ejs");
 };
 
+// Post log-in route
 module.exports.postLoginRought = (req, res) => {
   req.flash("success", "Welcome back to Future Academy!");
 
@@ -31,6 +35,7 @@ module.exports.postLoginRought = (req, res) => {
   res.redirect(redirectUrl);
 };
 
+// Log-out route
 module.exports.logoutRought = (req, res, next) => {
   req.logout((err) => {
     if (err) {
@@ -41,6 +46,7 @@ module.exports.logoutRought = (req, res, next) => {
   });
 };
 
+// Get learning route
 module.exports.userCoursesRought = wrapAsync(async (req, res) => {
   const { userId } = req.params;
   const user = await User.findById(userId).populate({

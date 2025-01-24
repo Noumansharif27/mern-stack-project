@@ -50,14 +50,6 @@
               Purchase course
             </button>
           </form>
-          <% if(currentUser && !currentUser._id .equals(course.author._id) &&
-          isAlreadyPurchased == true) { %>
-          <form action="/courses/<%= course._id%>/leacture" method="get">
-            <button class="card-purchase-btn btn btn-2 purchase-btn">
-              <strong>Go to course</strong>
-            </button>
-            <% } %>
-          </form>
 
           <!--  <form action="#" method="post">
               <button class="btn btn-2 favourite-btn">
@@ -74,6 +66,13 @@
                 </svg>
               </button>
             </form> -->
+          <% } %> <% if(currentUser && !currentUser._id
+          .equals(course.author._id) && isAlreadyPurchased == true) { %>
+          <form action="/courses/<%= course._id%>/leacture" method="get">
+            <button class="card-purchase-btn btn btn-2 purchase-btn">
+              <strong>Go to course</strong>
+            </button>
+          </form>
           <% } %>
         </div>
         <span class="guarante-label">30-Day-Money-Back-Guarrantee</span>
