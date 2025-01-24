@@ -274,8 +274,8 @@
         <% if(course.reviews.length) {%>
         <h2><span>&starf;</span> 3.8 course rating | 97 rating</h2>
         <hr />
-        <% } %> <% if(currentUser && !currentUser._id
-        .equals(course.author._id)) { %>
+        <% } %> <% if((currentUser && !currentUser._id
+        .equals(course.author._id)) && isAlreadyPurchased == true) { %>
         <form
           action="/courses/<%= course._id %>/reviews"
           method="post"

@@ -49,7 +49,7 @@ module.exports.showRought = wrapAsync(async (req, res) => {
   if (currentUser) {
     // console.log(course.students);
     if (course.students.includes(currentUser._id)) {
-      console.log("The user had already purchased the course.");
+      // console.log("The user had already purchased the course.");
       res.locals.isAlreadyPurchased = true;
     } else {
       res.locals.isAlreadyPurchased = false;

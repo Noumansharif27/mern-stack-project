@@ -175,7 +175,23 @@ module.exports.isEligableForReview = async (req, res, next) => {
     return res.redirect(`/login`);
   }
 
-  // restricting student to only one review.
+  // Restricting non buyer.
+  const isStudent = user.courses.some((courseId) =>
+    courseId.equals(course.students._id)
+  );
+  if (isStudent) {
+    req.flash("error", "You have to buy the course first!");
+    return res.redirect(`/courses/${courseId}`);
+  }
+
+  // restricting student to one-time review.
+  const hasReviewed = courseReviews.some((review) =>
+    review.author.equals(user._id)
+  );
+  if (hasReviewed) {
+    req.flash("error", "You have already reviewed this course!");
+    return res.redirect(`/courses/${courseId}`);
+  }
 
   // Restricting the owner for reviewing.
   if (user && course.author._id.equals(user._id)) {

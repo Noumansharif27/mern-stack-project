@@ -4,11 +4,18 @@ const {
   validateReview,
   isReviewOwner,
   isLogedIn,
+  isEligableForReview,
 } = require("../utils/middleware.js");
 const reviewControllers = require("../controllers/review.js");
 
 // Post Review Rought
-router.post("/", isLogedIn, validateReview, reviewControllers.postReviewRought);
+router.post(
+  "/",
+  isLogedIn,
+  validateReview,
+  isEligableForReview,
+  reviewControllers.postReviewRought
+);
 
 // Destroy Rought
 router.delete(
