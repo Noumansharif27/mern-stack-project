@@ -31,15 +31,16 @@ router
     isCourseOwner,
     validateCourse,
     courseControlles.postEditRought
-  ); // Edit Post Rought
+  ); // Edit Post Route
 
-// Get Purchase Rought
+// Get Purchase Route
 router.get(
   "/:courseId/purchase",
   isCourseAuthor,
   courseControlles.getPurchaseRought
 );
 
+// Get leacture route
 router.get(
   "/:courseId/leacture",
   isLogedIn,

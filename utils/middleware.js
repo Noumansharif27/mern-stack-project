@@ -109,8 +109,8 @@ module.exports.isCourseAuthor = async (req, res, next) => {
 module.exports.isStudent = wrapAsync(async (req, res, next) => {
   const { courseId } = req.params;
   const user = res.locals.currentUser;
-  const purchaseStatus = res.locals.isAlreadyPurchased;
   const course = await Course.findById(courseId);
+  let purchaseStatus = res.locals.isAlreadyPurchased;
 
   if (!user.courses.includes(course._id)) {
     req.flash(
@@ -169,7 +169,7 @@ module.exports.isEligableForReview = async (req, res, next) => {
     return res.redirect(`/courses`);
   }
 
-  // Confirm the loged-In status.
+  // Confirming the loged-In status.
   if (!user) {
     req.flash("error", "You have to be logged-In first!");
     return res.redirect(`/login`);
@@ -184,7 +184,7 @@ module.exports.isEligableForReview = async (req, res, next) => {
     return res.redirect(`/courses/${courseId}`);
   }
 
-  // restricting student to one-time review.
+  // Restricting student to one-time review.
   const hasReviewed = courseReviews.some((review) =>
     review.author.equals(user._id)
   );
