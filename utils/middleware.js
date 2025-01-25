@@ -64,46 +64,50 @@ module.exports.isReviewOwner = async (req, res, next) => {
 module.exports.isCourseAuthor = async (req, res, next) => {
   const { courseId, reviewId } = req.params;
   const course = await Course.findById(courseId);
+  const user = res.locals.currentUser;
   if (!course) {
     req.flash("error", "The course you are looking for does not exists!");
     return res.redirect(`/courses`);
   }
 
-  if (!res.locals.currentUser) {
+  if (!user) {
     req.flash("error", "You have to be logged-In first!");
     return res.redirect(`/login`);
   }
 
-  if (
-    res.locals.currentUser &&
-    course.author._id.equals(res.locals.currentUser._id)
-  ) {
+  if (user && course.author._id.equals(user._id)) {
     req.flash("error", "You cannot buy your own course!");
     return res.redirect(`/courses/${courseId}`);
   }
   next();
 };
 
-// User middleware to check if the user had aleady purchased the course
-// module.exports.isBuyedAlready = async (req, res, next) => {
-//   try {
-//     if (req.isAuthenticated()) {
-//       const { courseId } = req.params;
-//       const course = await Course.findById(courseId);
+// Check whether user had already this course student
+module.exports.hadBuyedAlready = async (req, res, next) => {
+  try {
+    if (req.isAuthenticated()) {
+      const { courseId } = req.params;
+      const course = await Course.findById(courseId);
 
-//       const purchasedCourses = res.locals.currentUser.courses;
-//       if (purchasedCourses.includes(course._id)) {
-//         res.locals.isAlreadyPurchased = true;
-//       } else {
-//         res.locals.isAlreadyPurchased = true;
-//         next();
-//       }
-//       next();
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+      if (!course) {
+        req.flash("error", "The course you are lookng for does not exists!");
+        return res.redirect("/courses");
+      }
+
+      let hadPurchased = res.locals.currentUser.courses.some((buyedCourseId) =>
+        buyedCourseId.equals(courseId)
+      );
+
+      if (hadPurchased) {
+        req.flash("error", "You cannot buy a course more then once.");
+        return res.redirect(`/courses/${courseId}`);
+      }
+      next();
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // Check wether the user had enrolled in course
 module.exports.isStudent = wrapAsync(async (req, res, next) => {

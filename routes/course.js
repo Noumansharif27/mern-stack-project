@@ -6,6 +6,7 @@ const {
   isCourseOwner,
   isCourseAuthor,
   isStudent,
+  hadBuyedAlready,
 } = require("../utils/middleware.js");
 const courseControlles = require("../controllers/course.js");
 
@@ -20,7 +21,7 @@ router.get("/new", isLogedIn, courseControlles.getNewRought);
 router
   .route("/:courseId")
   .get(courseControlles.showRought) // Show Rought
-  .post(courseControlles.postPurchaseRought) // Post purchase Rought
+  .post(hadBuyedAlready, courseControlles.postPurchaseRought) // Post purchase Rought
   .delete(isLogedIn, isCourseOwner, courseControlles.destroyRought); // Destroy Rought
 
 router
@@ -37,6 +38,7 @@ router
 router.get(
   "/:courseId/purchase",
   isCourseAuthor,
+  hadBuyedAlready,
   courseControlles.getPurchaseRought
 );
 
