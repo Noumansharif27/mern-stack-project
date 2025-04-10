@@ -32,10 +32,6 @@
           <img src="<%= course.image %>" alt="" />
           <img src="/assets/play-icon.svg" class="play-icon" />
         </div>
-        <h4 class="course-price">
-          <strong class="discounted-price">$0</strong>
-          <span class="real-price"><%= course.price %></span> 100% off
-        </h4>
         <h3 class="card-status"><%= course.description %></h3>
         <div class="show-card-btns">
           <% if(currentUser && currentUser._id .equals(course.author._id)) { %>
