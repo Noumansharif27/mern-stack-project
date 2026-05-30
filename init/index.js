@@ -19,7 +19,7 @@ async function initDB() {
 
   initData.data = initData.data.map((obj) => ({
     ...obj,
-    author: "68d52854408e0e38e7cf9804",
+    author: "6a1b15f5fd9768ce6c78278c",
   }));
   await Course.insertMany(initData.data);
   console.log("data was initilize.");

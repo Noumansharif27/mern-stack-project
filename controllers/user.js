@@ -18,6 +18,7 @@ module.exports.postSigninRought = wrapAsync(async (req, res, next) => {
     }
 
     req.flash("success", "Welcome at Future Academy!");
+    console.log(user);
     res.redirect("/courses");
   });
 });
